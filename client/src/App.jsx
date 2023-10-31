@@ -1,13 +1,17 @@
 import Header from "./layouts/Header";
 import Footer from "./layouts/Footer";
+import Main from "./layouts/Main";
+import CustomContainer from "./layouts/CustomContainer";
 
 const App = () => {
 	return (
-		<>
-			<Header />
-			<h1 className="text-3xl font-bold">Oybek Artikov</h1>
-			<Footer />
-		</>
+		<div className="">
+			<CustomContainer>
+				<Header />
+				<Main />
+				<Footer />
+			</CustomContainer>
+		</div>
 	);
 };
 

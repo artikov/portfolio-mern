@@ -1,3 +1,13 @@
+@import "normalize.css";
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html,
+body {
+	background-color: #010c15;
+	font-family: "Fira Code", monospace;
+	margin: 20px;
+}
