@@ -1,7 +1,7 @@
 const HomePage = () => {
 	return (
-		<div className="flex justify-center px-60 gap-5 items-center h-full">
-			<div className="flex flex-col gap-14 w-1/2 z-10">
+		<div className="flex justify-center px-10 lg:px-60 gap-5 items-center h-full">
+			<div className="flex flex-col gap-14 lg:w-1/2 z-10">
 				<div>
 					<p className="text-lg text-slate-200">Hello World. I am</p>
 					<h1 className="text-5xl text-slate-200">Oybek Artikov</h1>
@@ -29,11 +29,11 @@ const HomePage = () => {
 					</div>
 				</div>
 			</div>
-			<div className="w-1/2 h-full z-10 flex flex-col justify-center">
+			<div className="hidden lg:w-1/2 h-full z-10 lg:flex flex-col justify-center">
 				<div className="h-1/3 bg-custom-transparent rounded-lg">content</div>
 			</div>
-			<div className="absolute w-[454px] h-[492px] bottom-14 right-10 gradient-background-indigo -z-10"></div>
-			<div className="absolute w-[454px] h-[492px] top-24 right-1/4 gradient-background-emerlad -z-10"></div>
+			<div className="absolute sm:w-[454px] sm:h-[492px] sm:bottom-14 sm:right-10 gradient-background-indigo -z-10"></div>
+			<div className="absolute sm:w-[454px] sm:h-[492px] sm:top-24 sm:right-1/4 gradient-background-emerlad -z-10"></div>
 		</div>
 	);
 };
