@@ -11,3 +11,32 @@ body {
 	font-family: "Fira Code", monospace;
 	margin: 20px;
 }
+
+/******** MAIN PAGE STYLES *********/
+/* For a radial gradient */
+.gradient-background-emerlad {
+	transform: rotate(25deg);
+	background-image: radial-gradient(
+		closest-side at 230px 200px,
+		#43d9ad -100%,
+		transparent 100%
+	);
+}
+
+.gradient-background-indigo {
+	transform: rotate(20deg);
+	background-image: radial-gradient(
+		closest-side at 240px 260px,
+		#4d5bce -100%,
+		transparent 100%
+	);
+}
+
+/* container transparent background */
+.bg-custom-transparent {
+	backdrop-filter: blur(25px) saturate(161%);
+	-webkit-backdrop-filter: blur(25px) saturate(161%);
+	background-color: rgba(93, 93, 93, 0.5);
+	border-radius: 12px;
+	border: 1px solid rgba(255, 255, 255, 0.125);
+}
