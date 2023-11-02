@@ -1,3 +1,7 @@
+import CodeSnippet from "../components/CodeSnippet";
+
+const nums = [0, 1, 2, 3, 4];
+
 const HomePage = () => {
 	return (
 		<div className="flex justify-center px-10 lg:px-60 gap-5 items-center h-full">
@@ -29,8 +33,18 @@ const HomePage = () => {
 					</div>
 				</div>
 			</div>
-			<div className="hidden lg:w-1/2 h-full z-10 lg:flex flex-col justify-center">
-				<div className="h-1/3 bg-custom-transparent rounded-lg">content</div>
+			<div className="hidden lg:w-1/2 h-full z-10 lg:flex items-center">
+				<div className="snippet-wrapper">
+					{nums.map((num) => (
+						<div
+							className="snippet-card xl:h-[180px] xl:w-[562px] lg:h-[180px] lg:w-[420px]"
+							style={{ "--delay": num }}
+							key={num}
+						>
+							<CodeSnippet fileNum={num} />
+						</div>
+					))}
+				</div>
 			</div>
 			<div className="absolute sm:w-[454px] sm:h-[492px] sm:bottom-14 sm:right-10 gradient-background-indigo -z-10"></div>
 			<div className="absolute sm:w-[454px] sm:h-[492px] sm:top-24 sm:right-1/4 gradient-background-emerlad -z-10"></div>

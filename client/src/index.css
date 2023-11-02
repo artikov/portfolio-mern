@@ -40,3 +40,55 @@ body {
 	border-radius: 12px;
 	border: 1px solid rgba(255, 255, 255, 0.125);
 }
+
+/*************** Code Snippet Styles **************/
+.snippet-wrapper {
+	display: flex;
+	align-items: center;
+	height: 100vh;
+	margin-bottom: 3rem;
+}
+
+.snippet-wrapper .snippet-card {
+	position: absolute;
+	opacity: 0;
+	pointer-events: none;
+	animation: animate 15s linear infinite;
+	animation-delay: calc(3s * var(--delay));
+}
+
+.snippet-wrapper:hover .snippet-card {
+	animation-play-state: paused;
+}
+
+.snippet-wrapper .snippet-card:last-child {
+	animation-delay: calc(-3s);
+}
+
+@keyframes animate {
+	0% {
+		opacity: 0;
+		transform: translateY(180%) scale(0.5);
+	}
+	5%,
+	20% {
+		opacity: 0.4;
+		transform: translateY(120%) scale(0.7);
+	}
+	25%,
+	40% {
+		opacity: 1;
+		pointer-events: auto;
+		transform: translateY(0) scale(1);
+	}
+	45%,
+	60% {
+		opacity: 0.4;
+		transform: translateY(-110%) scale(0.7);
+	}
+	65%,
+	100% {
+		opacity: 0;
+		transform: translateY(-170%) scale(0.5);
+	}
+}
