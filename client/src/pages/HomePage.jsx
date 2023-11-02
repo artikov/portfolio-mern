@@ -4,7 +4,7 @@ const nums = [0, 1, 2, 3, 4];
 
 const HomePage = () => {
 	return (
-		<div className="flex justify-center px-10 lg:px-60 gap-5 items-center h-full">
+		<div className="flex justify-center px-10 lg:px-40 gap-5 items-center h-full">
 			<div className="flex flex-col gap-14 lg:w-1/2 z-10">
 				<div>
 					<p className="text-lg text-slate-200">Hello World. I am</p>
@@ -37,7 +37,7 @@ const HomePage = () => {
 				<div className="snippet-wrapper">
 					{nums.map((num) => (
 						<div
-							className="snippet-card xl:h-[180px] xl:w-[562px] lg:h-[180px] lg:w-[420px]"
+							className="snippet-card xl:h-[180px] xl:w-[462px] lg:h-[180px] lg:w-[420px]"
 							style={{ "--delay": num }}
 							key={num}
 						>

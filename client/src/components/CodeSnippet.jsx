@@ -4,7 +4,7 @@ import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import PropTypes from "prop-types";
 
 const style = {
-	fontSize: ".7rem",
+	fontSize: ".6rem",
 	margin: "1rem",
 	padding: "1rem",
 	borderRadius: "1rem",
