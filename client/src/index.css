@@ -73,7 +73,7 @@ body {
 	5%,
 	20% {
 		opacity: 0.4;
-		transform: translateY(120%) scale(0.7);
+		transform: translateY(105%) scale(0.7);
 	}
 	25%,
 	40% {
@@ -84,7 +84,7 @@ body {
 	45%,
 	60% {
 		opacity: 0.4;
-		transform: translateY(-110%) scale(0.7);
+		transform: translateY(-100%) scale(0.7);
 	}
 	65%,
 	100% {

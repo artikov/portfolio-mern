@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
 	const navDefault =
-		"px-4 py-2 border-r border-slate-800 hover:bg-slate-800 hover:text-white flex items-center";
+		"px-4 py-2 border-r border-slate-800 hover:bg-slate-800 hover:text-white flex items-center hover:ease-in-out duration-300";
 
 	return (
 		<footer className="border-t border-slate-800 text-slate-500 absolute bottom-0 w-full">
@@ -37,7 +37,7 @@ const Footer = () => {
 				</div>
 				<Link
 					to={"https://github.com/artikov"}
-					className={`${navDefault} border-l-2  gap-5`}
+					className={navDefault + " border-l-2  gap-5"}
 					target="_blank"
 				>
 					@artikov

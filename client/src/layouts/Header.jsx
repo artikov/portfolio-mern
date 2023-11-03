@@ -2,17 +2,14 @@ import { NavLink } from "react-router-dom";
 
 const Header = () => {
 	const navDefault =
-		"text-sm font-semibold leading-6 px-4 py-2 border-r border-slate-800 hover:bg-slate-800 hover:text-white";
+		"text-sm font-semibold leading-6 px-4 py-2 border-r border-slate-800 hover:bg-slate-800 hover:text-white hover:ease-in-out duration-300";
 	const navActive = navDefault + " border-b-2 border-b-orange-300 text-white";
 
 	return (
 		<header className="border-b border-slate-800 top-0 absolute w-full">
 			<nav className="mx-auto flex items-center justify-between text-slate-500">
 				<div className="flex md:flex-1">
-					<NavLink
-						to={`/`}
-						className="text-sm font-semibold leading-6 pr-28 p-2 border-r border-slate-800 hover:bg-slate-800"
-					>
+					<NavLink to={`/`} className={navDefault + " pr-28 p-2"}>
 						Oybek Artikov
 					</NavLink>
 					<div className="hidden md:flex">
