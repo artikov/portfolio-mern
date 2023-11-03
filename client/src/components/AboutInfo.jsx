@@ -1,5 +1,5 @@
 const AboutInfo = ({ item }) => {
-	return <div>{item.content}</div>;
+	return <div className="p-2">{item.content}</div>;
 };
 
 export default AboutInfo;

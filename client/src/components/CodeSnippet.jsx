@@ -1,7 +1,11 @@
-import { useEffect, useState } from "react";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
+
+import { useGetGistsQuery } from "../services/githubSlice";
 import PropTypes from "prop-types";
+
+import Spinner from "./Spinner";
+import Message from "./Message";
 
 const style = {
 	fontSize: ".6rem",
@@ -14,24 +18,16 @@ const style = {
 const CodeSnippet = ({ fileNum }) => {
 	const GIST_ID = "239f23ef1b03ed6b48fad6f0086ba8f3";
 
-	const [gistData, setGistData] = useState(null);
+	const { data: gistData, error, isLoading } = useGetGistsQuery(GIST_ID);
 
-	// Fetch Gist data // THIS NEEDS TO BE MANAGED IN SLICES
-	useEffect(() => {
-		const apiUrl = `https://api.github.com/gists/${GIST_ID}`;
+	if (isLoading) {
+		return <Spinner />;
+	}
 
-		fetch(apiUrl)
-			.then((response) => response.json())
-			.then((data) => {
-				setGistData(data);
-			})
-			.catch((error) => {
-				console.error("Error fetching Gist data:", error);
-			});
-	}, [GIST_ID]);
-
-	if (!gistData) {
-		return <div>Loading Gist data...</div>;
+	if (error) {
+		return (
+			<Message variant="red">{error?.data?.message || error?.error}</Message>
+		);
 	}
 
 	return (
