@@ -8,7 +8,9 @@ const App = () => {
 		<div className="">
 			<CustomContainer>
 				<Header />
-				<Outlet />
+				<div className="py-10 h-full">
+					<Outlet />
+				</div>
 				<Footer />
 			</CustomContainer>
 		</div>
