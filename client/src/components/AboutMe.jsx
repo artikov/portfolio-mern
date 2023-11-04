@@ -1,11 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import PropTypes from "prop-types";
-import AboutInfo from "./AboutInfo";
+
 import { Link } from "react-router-dom";
 
 const AboutMe = ({ data }) => {
-	const [category, setCategory] = useState(data.categories[0]);
+	const [category, setCategory] = useState(null);
+
+	useEffect(() => {
+		if (data?.categories?.length > 0) {
+			setCategory(data.categories[0]);
+		}
+	}, [data]);
+
 	const handleCategoryChange = (item) => {
 		setCategory(item);
 	};
@@ -22,7 +29,7 @@ const AboutMe = ({ data }) => {
 					</div>
 				))}
 			</div>
-			<AboutInfo item={category} />
+			<div className="p-2">{category?.content}</div>
 		</div>
 	);
 };
