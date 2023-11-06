@@ -26,9 +26,9 @@ const AboutMePage = () => {
 	if (error) return <Message variant="danger">{error}</Message>;
 
 	return (
-		<div className="flex text-slate-500 h-full items-center">
-			<div className="flex h-full">
-				<div className="border-r border-slate-800 flex flex-col mt-2 w-max">
+		<div className="flex text-slate-500 h-full items-center ">
+			<div className="h-full border-r border-slate-800">
+				<div className="flex flex-col mt-2 w-max">
 					{abouts.map((item) => (
 						<div
 							key={item.title}
@@ -40,7 +40,7 @@ const AboutMePage = () => {
 					))}
 				</div>
 			</div>
-			<div className="h-full border-l border-slate-800">
+			<div className="h-full">
 				{selectedCategory ? <AboutMe data={selectedCategory} /> : <Spinner />}
 			</div>
 			<div className="w-1/2 border-l border-slate-800 h-full">CODE</div>

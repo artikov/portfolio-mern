@@ -9,12 +9,13 @@
     "server": "nodemon server/server.js",
     "client": "npm run dev --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-		"data:import": "node server/seeder.js",
-		"data:destroy": "node server/seeder.js -d"
+    "data:import": "node server/seeder.js",
+    "data:destroy": "node server/seeder.js -d"
   },
   "author": "Artikov",
   "license": "MIT",
   "dependencies": {
+    "aos": "^2.3.4",
     "bcryptjs": "^2.4.3",
     "express": "^4.18.2",
     "mongoose": "^8.0.0"

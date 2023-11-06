@@ -1,11 +1,19 @@
+import { useEffect } from "react";
+
 import CodeSnippet from "../components/CodeSnippet";
+
+import AOS from "aos";
 
 const nums = [0, 1, 2, 3, 4];
 
 const HomePage = () => {
+	useEffect(() => {
+		AOS.init();
+	}, []);
+
 	return (
 		<div className="flex justify-center px-10 lg:px-40 gap-5 items-center h-full">
-			<div className="flex flex-col gap-14 lg:w-1/2 z-10">
+			<div data-aos="fade" className="flex flex-col gap-14 lg:w-1/2 z-10">
 				<div>
 					<p className="text-lg text-slate-200">Hello World. I am</p>
 					<h1 className="text-5xl text-slate-200">Oybek Artikov</h1>
@@ -33,7 +41,10 @@ const HomePage = () => {
 					</div>
 				</div>
 			</div>
-			<div className="hidden lg:w-1/2 h-full z-10 lg:flex items-center">
+			<div
+				data-aos="fade"
+				className="hidden lg:w-1/2 h-full z-10 lg:flex items-center"
+			>
 				<div className="snippet-wrapper">
 					{nums.map((num) => (
 						<div

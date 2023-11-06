@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+
 import App from "./App.jsx";
 import ErrorPage from "./pages/ErrorPage.jsx";
 import HomePage from "./pages/HomePage";
@@ -11,6 +12,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { store } from "./store.js";
 import { Provider } from "react-redux";
 
+import "aos/dist/aos.css";
 import "./index.css";
 
 const router = createBrowserRouter([
