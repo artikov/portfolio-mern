@@ -1,12 +1,35 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 // import SyntaxHighlighter from "react-syntax-highlighter";
-import CodeWithComments from "./CodeComment";
+import CodeComment from "./CodeComment";
 
 import PropTypes from "prop-types";
 import Spinner from "./Spinner";
 
 const AboutMe = ({ data }) => {
 	const [category, setCategory] = useState(null);
+
+	//line count
+	const textRef = useRef(null);
+	const [lineCount, setLineCount] = useState(3);
+
+	useEffect(() => {
+		function calculateLines() {
+			if (textRef.current) {
+				const divHeight = textRef.current.clientHeight;
+				const lineHeight = parseInt(
+					window.getComputedStyle(textRef.current).lineHeight
+				);
+
+				if (divHeight > lineHeight) {
+					setLineCount(Math.floor(divHeight / lineHeight));
+				}
+			}
+		}
+		calculateLines();
+		window.addEventListener("resize", calculateLines);
+		return () => window.removeEventListener("resize", calculateLines);
+	}, []);
+	console.log(lineCount);
 
 	useEffect(() => {
 		if (data?.categories?.length > 0) {
@@ -40,7 +63,13 @@ const AboutMe = ({ data }) => {
 					{category === null ? (
 						<Spinner />
 					) : (
-						<CodeWithComments text={category.content} />
+						<>
+							<div ref={textRef} className="hidden">
+								{category.content}
+							</div>
+
+							<CodeComment text={category.content} lines={lineCount} />
+						</>
 					)}
 				</div>
 			</div>
