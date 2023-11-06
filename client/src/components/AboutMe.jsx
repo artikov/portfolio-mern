@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 
 import PropTypes from "prop-types";
 
-import { Link } from "react-router-dom";
-
 const AboutMe = ({ data }) => {
 	const [category, setCategory] = useState(null);
 
@@ -18,18 +16,22 @@ const AboutMe = ({ data }) => {
 	};
 
 	return (
-		<div className="flex">
-			<div className="border-r border-slate-800">
-				<h1 className="border-b border-slate-800 p-2">{data.title}</h1>
+		<div className="flex h-full">
+			<div className="border-r border-slate-800 min-w-[180px] text-sm">
+				<div className="border-b border-slate-800 p-2.5 cursor-default">
+					<h1>{data.title}</h1>
+				</div>
 				{data.categories.map((item) => (
-					<div key={item.category} className="flex">
-						<Link onClick={() => handleCategoryChange(item)} className="p-2">
+					<div key={item.category} className="flex cursor-default">
+						<div onClick={() => handleCategoryChange(item)} className="p-2">
 							{item.category}
-						</Link>
+						</div>
 					</div>
 				))}
 			</div>
-			<div className="p-2">{category?.content}</div>
+			<div className="mt-10">
+				<div className="p-2 border-t border-slate-800">{category?.content}</div>
+			</div>
 		</div>
 	);
 };

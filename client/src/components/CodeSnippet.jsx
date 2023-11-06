@@ -12,7 +12,9 @@ const style = {
 	margin: "1rem",
 	padding: "1rem",
 	borderRadius: "1rem",
-	border: "1px solid #1E2D3D",
+	backdropFilter: "blur(25px) saturate(161%)",
+	WebkitBackdropFilter: "blur(25px) saturate(161%)",
+	backgroundColor: "rgba(0, 0, 0, 0.5)",
 };
 
 const CodeSnippet = ({ fileNum }) => {

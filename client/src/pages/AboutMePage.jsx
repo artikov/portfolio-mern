@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 
 import AboutMe from "../components/AboutMe";
 import Spinner from "../components/Spinner";
 import Message from "../components/Message";
+import AboutIcons from "../components/AboutIcons";
 
 import { useFetchAboutsQuery } from "../services/aboutsApiSlice";
 
@@ -26,25 +26,24 @@ const AboutMePage = () => {
 	if (error) return <Message variant="danger">{error}</Message>;
 
 	return (
-		<div className="flex text-white h-full items-center">
+		<div className="flex text-slate-500 h-full items-center">
 			<div className="flex h-full">
-				<div className="border-r border-slate-800 flex flex-col">
+				<div className="border-r border-slate-800 flex flex-col mt-2 w-max">
 					{abouts.map((item) => (
-						<Link
+						<div
 							key={item.title}
-							to="#"
 							onClick={() => handleCategoryChange(item)}
-							className="p-2"
+							className="m-4"
 						>
-							{item.title}
-						</Link>
+							<AboutIcons icon={item.title} />
+						</div>
 					))}
 				</div>
-				<div className="w-3/4 h-full border-l border-slate-800">
-					{selectedCategory ? <AboutMe data={selectedCategory} /> : <Spinner />}
-				</div>
 			</div>
-			<div className="w-1/4 border-l border-slate-800 h-full">CODE</div>
+			<div className="h-full border-l border-slate-800">
+				{selectedCategory ? <AboutMe data={selectedCategory} /> : <Spinner />}
+			</div>
+			<div className="w-1/2 border-l border-slate-800 h-full">CODE</div>
 		</div>
 	);
 };

@@ -32,15 +32,6 @@ body {
 	);
 }
 
-/* container transparent background */
-.bg-custom-transparent {
-	backdrop-filter: blur(25px) saturate(161%);
-	-webkit-backdrop-filter: blur(25px) saturate(161%);
-	background-color: rgba(93, 93, 93, 0.5);
-	border-radius: 12px;
-	border: 1px solid rgba(255, 255, 255, 0.125);
-}
-
 /*************** Code Snippet Styles **************/
 .snippet-wrapper {
 	display: flex;
@@ -91,4 +82,14 @@ body {
 		opacity: 0;
 		transform: translateY(-170%) scale(0.5);
 	}
+}
+
+/************ AboutIcons.css **************/
+.about-icon {
+	opacity: 0.4;
+	transition: opacity 0.4s ease-in-out; /* Add a transition for smooth animation */
+}
+.about-icon:hover {
+	opacity: 1;
+	cursor: pointer;
 }
