@@ -10,6 +10,7 @@ body {
 	background-color: #010c15;
 	font-family: "Fira Code", monospace;
 	margin: 20px;
+	cursor: default;
 }
 
 /******** MAIN PAGE STYLES *********/
@@ -86,7 +87,6 @@ body {
 
 /************ AboutIcons.css **************/
 .about-icon {
-	opacity: 0.4;
 	transition: opacity 0.3s ease-in-out; /* Add a transition for smooth animation */
 }
 .about-icon:hover {

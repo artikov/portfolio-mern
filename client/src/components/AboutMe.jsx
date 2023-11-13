@@ -5,6 +5,14 @@ import CodeComment from "./CodeComment";
 import PropTypes from "prop-types";
 import Spinner from "./Spinner";
 
+import Dropdown from "../assets/icons/dropdown.svg";
+import RedFolder from "../assets/icons/red-folder.svg";
+import GreenFolder from "../assets/icons/green-folder.svg";
+import BlueFolder from "../assets/icons/blue-folder.svg";
+import MarkdownFile from "../assets/icons/markdown-file.svg";
+import Down from "../assets/icons/down.svg";
+import Side from "../assets/icons/side.svg";
+
 const AboutMe = ({ data }) => {
 	const [category, setCategory] = useState(null);
 
@@ -29,7 +37,7 @@ const AboutMe = ({ data }) => {
 		window.addEventListener("resize", calculateLines);
 		return () => window.removeEventListener("resize", calculateLines);
 	}, []);
-	console.log(lineCount);
+	// console.log(lineCount);
 
 	useEffect(() => {
 		if (data?.categories?.length > 0) {
@@ -44,16 +52,39 @@ const AboutMe = ({ data }) => {
 	return (
 		<div className="flex h-full">
 			<div className="border-r border-slate-800 min-w-[181px] text-sm">
-				<div className="border-b border-slate-800 p-2.5">
+				<div className="flex gap-2 border-b border-slate-800 p-2.5 text-white">
+					<img src={Dropdown} alt="" />
 					<h1>{data.title}</h1>
 				</div>
-				{data.categories.map((item) => (
+				{data.categories.map((item, i) => (
 					<div key={item.category} className="flex">
 						<div
 							onClick={() => handleCategoryChange(item)}
-							className="m-2.5 cursor-pointer hover:text-white ease-in-out transition-all"
+							className={
+								"flex items-center gap-2 m-2.5 cursor-pointer hover:text-white ease-in-out transition-all " +
+								(category?.category === item.category && "text-white")
+							}
 						>
-							{item.category}
+							<div className="w-3">
+								<img
+									src={category?.category === item.category ? Down : Side}
+									alt=""
+								/>
+							</div>
+							<img
+								src={
+									i == 0
+										? RedFolder
+										: i == 1
+										? GreenFolder
+										: i == 2
+										? BlueFolder
+										: MarkdownFile
+								}
+								className=""
+								alt=""
+							/>
+							<div className="">{item.category}</div>
 						</div>
 					</div>
 				))}

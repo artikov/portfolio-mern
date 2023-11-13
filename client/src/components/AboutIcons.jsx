@@ -5,7 +5,7 @@ import ProfessionalSVG from "../assets/icons/professional.svg";
 import PropTypes from "prop-types";
 
 const AboutIcons = (props) => {
-	const { icon } = props;
+	const { icon, active } = props;
 
 	let iconType;
 	if (icon === "Personal-Info") {
@@ -17,7 +17,14 @@ const AboutIcons = (props) => {
 	}
 
 	return (
-		<img src={iconType} alt="about-icons" className="about-icon" {...props} />
+		<img
+			src={iconType}
+			alt="about-icons"
+			className={`about-icon ${
+				active?.title === icon ? "opacity-100" : "opacity-40"
+			}`}
+			{...props}
+		/>
 	);
 };
 

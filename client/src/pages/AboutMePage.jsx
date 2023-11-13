@@ -4,6 +4,7 @@ import AboutMe from "../components/AboutMe";
 import Spinner from "../components/Spinner";
 import Message from "../components/Message";
 import AboutIcons from "../components/AboutIcons";
+import CodeSnippet from "../components/CodeSnippet";
 
 import { useFetchAboutsQuery } from "../services/aboutsApiSlice";
 
@@ -35,7 +36,7 @@ const AboutMePage = () => {
 							onClick={() => handleCategoryChange(item)}
 							className="m-4"
 						>
-							<AboutIcons icon={item.title} />
+							<AboutIcons icon={item.title} active={selectedCategory} />
 						</div>
 					))}
 				</div>
@@ -43,7 +44,9 @@ const AboutMePage = () => {
 			<div className="h-full">
 				{selectedCategory ? <AboutMe data={selectedCategory} /> : <Spinner />}
 			</div>
-			<div className="w-1/2 border-l border-slate-800 h-full">CODE</div>
+			<div className="w-1/2 border-l border-slate-800 h-full p-4">
+				<CodeSnippet fileNum={1} />
+			</div>
 		</div>
 	);
 };
