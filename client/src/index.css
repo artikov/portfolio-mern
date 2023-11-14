@@ -103,3 +103,26 @@ body {
 	opacity: 1;
 	cursor: pointer;
 }
+
+/************ Scroll Images in About page **************/
+.scroll-images {
+	height: 100vh; /* Set a maximum height for the scrolling container */
+	/* overflow-y: hidden; */
+	position: relative;
+}
+
+.scroll-images .content-wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+	animation: scrollAnimation 4s linear infinite; /* Adjust the duration as needed */
+}
+
+@keyframes scrollAnimation {
+	0% {
+		transform: translateY(0);
+	}
+	100% {
+		transform: translateY(-100%);
+	}
+}

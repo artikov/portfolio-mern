@@ -27,7 +27,7 @@ const AboutMePage = () => {
 	if (error) return <Message variant="danger">{error}</Message>;
 
 	return (
-		<div className="flex text-slate-500 h-full items-center ">
+		<div className="flex text-slate-500 h-full">
 			<div className="h-full border-r border-slate-800">
 				<div className="flex flex-col mt-2 w-max">
 					{abouts.map((item) => (
@@ -44,9 +44,26 @@ const AboutMePage = () => {
 			<div className="h-full">
 				{selectedCategory ? <AboutMe data={selectedCategory} /> : <Spinner />}
 			</div>
-			<div className="hidden lg:flex flex-col w-[700px] border-l border-slate-800 h-full ">
-				<div className="border-t border-slate-800 mt-10">
-					<CodeSnippet fileNum={1} />
+			<div className="hidden lg:flex  border-l border-slate-800 h-full">
+				<div className="border-t border-slate-800 mt-10 p-4 overflow-auto">
+					<div className="scroll-images">
+						<div className="content-wrapper">
+							{selectedCategory?.images.map((item, i) => (
+								<div key={i}>
+									<img src={item.image} className="rounded-lg m-4" alt="" />
+									<p className="">{item.caption}</p>
+								</div>
+							))}
+						</div>
+						<div className="content-wrapper">
+							{selectedCategory?.images.map((item, i) => (
+								<div key={i}>
+									<img src={item.image} className="rounded-lg m-4" alt="" />
+									<p className="">{item.caption}</p>
+								</div>
+							))}
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

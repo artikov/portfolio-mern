@@ -9,7 +9,10 @@ const Header = () => {
 		<header className="border-b border-slate-800 top-0 absolute w-full">
 			<nav className="mx-auto flex items-center justify-between text-slate-500">
 				<div className="flex md:flex-1">
-					<NavLink to={`/`} className={navDefault + " pr-28 p-2"}>
+					<NavLink
+						to={`/`}
+						className={navDefault + " pr-28 p-2 border-r-0 md:border-r"}
+					>
 						Oybek Artikov
 					</NavLink>
 					<div className="hidden md:flex">
