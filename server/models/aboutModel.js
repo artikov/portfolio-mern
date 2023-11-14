@@ -9,6 +9,12 @@ const aboutSchema = new mongoose.Schema({
 			content: String,
 		},
 	],
+	images: [
+		{
+			image: String,
+			caption: String,
+		},
+	],
 });
 
 // Create the Mongoose model
