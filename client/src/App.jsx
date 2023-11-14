@@ -5,15 +5,13 @@ import { Outlet } from "react-router-dom";
 
 const App = () => {
 	return (
-		<div className="">
-			<CustomContainer>
-				<Header />
-				<div className="py-10 h-full">
-					<Outlet />
-				</div>
-				<Footer />
-			</CustomContainer>
-		</div>
+		<CustomContainer>
+			<Header />
+			<div className="py-10 h-full">
+				<Outlet />
+			</div>
+			<Footer />
+		</CustomContainer>
 	);
 };
 

@@ -44,8 +44,10 @@ const AboutMePage = () => {
 			<div className="h-full">
 				{selectedCategory ? <AboutMe data={selectedCategory} /> : <Spinner />}
 			</div>
-			<div className="w-1/2 border-l border-slate-800 h-full p-4">
-				<CodeSnippet fileNum={1} />
+			<div className="hidden lg:flex flex-col w-[700px] border-l border-slate-800 h-full ">
+				<div className="border-t border-slate-800 mt-10">
+					<CodeSnippet fileNum={1} />
+				</div>
 			</div>
 		</div>
 	);

@@ -12,6 +12,16 @@ body {
 	margin: 20px;
 	cursor: default;
 }
+@media screen and (max-width: 1024px) {
+	body {
+		margin: 10px;
+	}
+}
+@media screen and (max-width: 425px) {
+	body {
+		margin: 0;
+	}
+}
 
 /******** MAIN PAGE STYLES *********/
 /* For a radial gradient */

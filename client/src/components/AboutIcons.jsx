@@ -30,6 +30,7 @@ const AboutIcons = (props) => {
 
 AboutIcons.propTypes = {
 	icon: PropTypes.string.isRequired,
+	active: PropTypes.object,
 };
 
 export default AboutIcons;
