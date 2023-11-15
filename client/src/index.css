@@ -105,3 +105,10 @@ body {
 }
 
 /************ Animate Images in About page **************/
+.slick-slide > div {
+	margin: 10px;
+}
+
+.slick-slide {
+	padding: 25px 0;
+}
