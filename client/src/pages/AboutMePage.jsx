@@ -4,7 +4,6 @@ import AboutMe from "../components/AboutMe";
 import Spinner from "../components/Spinner";
 import Message from "../components/Message";
 import AboutIcons from "../components/AboutIcons";
-import CodeSnippet from "../components/CodeSnippet";
 
 import { useFetchAboutsQuery } from "../services/aboutsApiSlice";
 
@@ -44,26 +43,26 @@ const AboutMePage = () => {
 			<div className="h-full">
 				{selectedCategory ? <AboutMe data={selectedCategory} /> : <Spinner />}
 			</div>
-			<div className="hidden lg:flex  border-l border-slate-800 h-full">
-				<div className="border-t border-slate-800 mt-10 p-4 overflow-auto">
-					<div className="scroll-images">
-						<div className="content-wrapper">
-							{selectedCategory?.images.map((item, i) => (
-								<div key={i}>
-									<img src={item.image} className="rounded-lg m-4" alt="" />
-									<p className="">{item.caption}</p>
-								</div>
-							))}
+			<div className="hidden lg:flex w-full border-l border-slate-800 ">
+				<div className="w-full border-t border-slate-800 mt-10 p-4 overflow-y-scroll">
+					{selectedCategory?.images.map((item, i) => (
+						<div
+							key={i}
+							className="flex flex-col justify-center items-center bg-slate-950 border border-slate-800 rounded-lg m-4 mb-8 overflow-hidden hover:scale-105 transition-all duration-300 ease-in-out"
+						>
+							<div className="w-full">
+								<img src={item.image} alt="" className="object-cover" />
+							</div>
+							<div>
+								<p className="m-4 text-sm text-justify">
+									Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+									Nostrum corporis soluta dolorem fuga reiciendis repudiandae
+									dignissimos minus tempore facere error.
+									{item.caption}
+								</p>
+							</div>
 						</div>
-						<div className="content-wrapper">
-							{selectedCategory?.images.map((item, i) => (
-								<div key={i}>
-									<img src={item.image} className="rounded-lg m-4" alt="" />
-									<p className="">{item.caption}</p>
-								</div>
-							))}
-						</div>
-					</div>
+					))}
 				</div>
 			</div>
 		</div>
