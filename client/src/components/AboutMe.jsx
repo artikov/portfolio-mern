@@ -91,7 +91,7 @@ const AboutMe = ({ data }) => {
 				</div>
 			</div>
 			<div className="mt-10">
-				<div className="p-2 border-t border-slate-800 xl:w-[800px]">
+				<div className="p-2 border-t border-slate-800 lg:w-[500px] xl:w-[800px]">
 					{category === null ? (
 						<Spinner />
 					) : (

@@ -1,53 +1,60 @@
-import { useRef } from "react";
-import Slider from "react-slick";
+import { useState, useEffect } from "react";
+
+import Spinner from "./Spinner";
 
 import PropTypes from "prop-types";
 
 const AboutCertificates = ({ selectedCategory }) => {
-	const sliderRef = useRef();
+	const [allItems, setAllItems] = useState([]);
 
-	const sliderSettings = {
-		arrows: false,
-		autoplay: true,
-		autoplaySpeed: 2000,
-		speed: 1000,
-		slidesToShow: 2,
-		slidesToScroll: 1,
-		vertical: true,
-		verticalSwiping: true,
-		infinite: true,
-	};
-
-	const handleScroll = (e) => {
-		if (e.deltaY > 0) {
-			sliderRef.current.slickNext();
+	useEffect(() => {
+		if (!selectedCategory) {
+			<Spinner />;
 		} else {
-			sliderRef.current.slickPrev();
+			const items = selectedCategory?.images.map((item, i) => (
+				<div
+					key={i}
+					className="mb-6 bg-slate-950 border border-slate-800 rounded-lg overflow-auto"
+				>
+					<div className="w-full">
+						<img src={item.image} alt="" className="object-cover" />
+					</div>
+					<div>
+						<p className="m-4 text-sm text-justify">
+							Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum
+							corporis soluta dolorem fuga reiciendis repudiandae dignissimos
+							minus tempore facere error.
+							{item.caption}
+						</p>
+					</div>
+				</div>
+			));
+			setAllItems(items);
 		}
-	};
+	}, [selectedCategory]);
+
+	let carouselItems = [];
+	if (allItems.length > 2) {
+		carouselItems = [
+			...allItems,
+			...allItems.map((item, i) => ({
+				...item,
+				key: i + allItems.length,
+			})),
+		];
+	} else {
+		carouselItems = allItems;
+	}
 
 	return (
-		<div className="my-2" onWheel={handleScroll}>
-			<Slider ref={sliderRef} {...sliderSettings}>
-				{selectedCategory?.images.map((item, i) => (
-					<div
-						key={i}
-						className="bg-slate-950 border border-slate-800 rounded overflow-auto"
-					>
-						<div className="w-full">
-							<img src={item.image} alt="" className="object-cover" />
-						</div>
-						<div>
-							<p className="m-4 text-sm text-justify">
-								Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-								Nostrum corporis soluta dolorem fuga reiciendis repudiandae
-								dignissimos minus tempore facere error.
-								{item.caption}
-							</p>
-						</div>
-					</div>
-				))}
-			</Slider>
+		<div
+			className={
+				selectedCategory?.images.length > 2
+					? "carousel-container"
+					: "m-[1rem] gap-[1rem]"
+			}
+		>
+			{carouselItems}
 		</div>
 	);
 };

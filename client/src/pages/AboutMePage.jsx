@@ -6,9 +6,15 @@ import Message from "../components/Message";
 import AboutIcons from "../components/AboutIcons";
 import AboutCertificates from "../components/AboutCertificates";
 
+import AOS from "aos";
+
 import { useFetchAboutsQuery } from "../services/aboutsApiSlice";
 
 const AboutMePage = () => {
+	useEffect(() => {
+		AOS.init();
+	}, []);
+
 	const { data: abouts, isLoading, error } = useFetchAboutsQuery();
 	const [selectedCategory, setSelectedCategory] = useState(null);
 
@@ -28,7 +34,7 @@ const AboutMePage = () => {
 
 	return (
 		<div className="flex text-slate-500 h-full">
-			<div className="h-full border-r border-slate-800">
+			<div data-aos="fade" className="border-r border-slate-800">
 				<div className="flex flex-col mt-2 w-max">
 					{abouts.map((item) => (
 						<div
@@ -41,10 +47,13 @@ const AboutMePage = () => {
 					))}
 				</div>
 			</div>
-			<div className="h-full">
+			<div data-aos="fade" className="">
 				{selectedCategory ? <AboutMe data={selectedCategory} /> : <Spinner />}
 			</div>
-			<div className="mt-10 border-l border-t border-slate-800">
+			<div
+				data-aos="fade-up"
+				className="hidden md:block w-full mt-10 border-l border-t border-slate-800 p-2 overflow-hidden"
+			>
 				<AboutCertificates selectedCategory={selectedCategory} />
 			</div>
 		</div>

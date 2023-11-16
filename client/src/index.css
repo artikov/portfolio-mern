@@ -105,10 +105,20 @@ body {
 }
 
 /************ Animate Images in About page **************/
-.slick-slide > div {
-	margin: 10px;
+.carousel-container {
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+	margin: 1rem;
+	gap: 1rem;
+	animation: scrollAnimation 5s linear infinite;
 }
 
-.slick-slide {
-	padding: 25px 0;
+@keyframes scrollAnimation {
+	0% {
+		transform: translateY(0%);
+	}
+	100% {
+		transform: translateY(-50%);
+	}
 }

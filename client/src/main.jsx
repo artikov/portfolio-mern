@@ -14,8 +14,6 @@ import { Provider } from "react-redux";
 
 import "aos/dist/aos.css";
 import "./index.css";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 
 const router = createBrowserRouter([
 	{
