@@ -2,8 +2,8 @@ import { NavLink } from "react-router-dom";
 
 const Header = () => {
 	const navDefault =
-		"text-sm font-semibold leading-6 px-4 py-2 border-r border-slate-800 hover:bg-slate-800 hover:text-white hover:ease-in-out duration-300";
-	const navActive = navDefault + " border-b-2 border-b-orange-300 text-white";
+		"text-sm  leading-6 px-4 py-2 border-r border-slate-800 hover:bg-slate-800 hover:text-white hover:ease-in-out duration-300";
+	const navActive = navDefault + " border-b border-b-orange-300 text-white";
 
 	return (
 		<header className="border-b border-slate-800 top-0 absolute w-full">
