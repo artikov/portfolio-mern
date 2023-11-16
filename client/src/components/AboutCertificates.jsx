@@ -14,7 +14,7 @@ const AboutCertificates = ({ selectedCategory }) => {
 			const items = selectedCategory?.images.map((item, i) => (
 				<div
 					key={i}
-					className="mb-6 bg-slate-950 border border-slate-800 rounded-lg overflow-auto"
+					className="w-full mb-6 bg-slate-950 border border-slate-800 rounded-lg overflow-auto hover:shadow-lg hover:shadow-slate-700 hover:scale-105 transition duration-300 ease-in-out"
 				>
 					<div className="w-full">
 						<img src={item.image} alt="" className="object-cover" />

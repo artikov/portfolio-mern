@@ -52,7 +52,7 @@ const AboutMePage = () => {
 			</div>
 			<div
 				data-aos="fade-up"
-				className="hidden md:block w-full mt-10 border-l border-t border-slate-800 p-2 overflow-hidden"
+				className="hidden md:block w-full mt-10 border-l border-t border-slate-800 p-2 overflow-y-hidden"
 			>
 				<AboutCertificates selectedCategory={selectedCategory} />
 			</div>

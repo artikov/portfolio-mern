@@ -109,9 +109,9 @@ body {
 	display: flex;
 	flex-direction: column;
 	overflow: hidden;
-	margin: 1rem;
+	padding: 1rem;
 	gap: 1rem;
-	animation: scrollAnimation 5s linear infinite;
+	animation: scrollAnimation 7s linear infinite;
 }
 
 @keyframes scrollAnimation {
