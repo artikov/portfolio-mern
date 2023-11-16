@@ -49,9 +49,7 @@ const AboutCertificates = ({ selectedCategory }) => {
 	return (
 		<div
 			className={
-				selectedCategory?.images.length > 2
-					? "carousel-container"
-					: "m-[1rem] gap-[1rem]"
+				allItems.length > 2 ? "carousel-container" : "m-[1rem] gap-[1rem]"
 			}
 		>
 			{carouselItems}
