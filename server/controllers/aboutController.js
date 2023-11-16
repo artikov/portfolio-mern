@@ -1,5 +1,4 @@
 import asyncHandler from "../middleware/asyncHandler.js";
-
 import About from "../models/aboutModel.js";
 
 // @desc 		Fetch all abouts

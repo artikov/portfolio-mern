@@ -5,6 +5,7 @@ import connectDB from "./config/db.js";
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 
 import aboutRoutes from "./routes/aboutRoutes.js";
+import projectRoutes from "./routes/projectRoutes.js";
 
 connectDB();
 
@@ -16,6 +17,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/abouts", aboutRoutes);
+app.use("/api/projects", projectRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
