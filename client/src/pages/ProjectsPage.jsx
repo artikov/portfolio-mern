@@ -4,14 +4,31 @@ import ProjectsSidebar from "../components/ProjectsSidebar";
 import Message from "../components/Message";
 import Spinner from "../components/Spinner";
 
+import { useSelector } from "react-redux";
 import { useFetchProjectsQuery } from "../services/projectsApiSlice";
 
 const ProjectsPage = () => {
 	const { data: projects, isLoading, error } = useFetchProjectsQuery();
 
+	const selectedTechnologies = useSelector(
+		(state) => state.technologies.selectedTechnologies
+	);
+
+	// Filter projects based on selected technologies
+	const filteredProjects = projects?.filter((project) =>
+		project.technologies.some((technology) =>
+			selectedTechnologies.includes(technology)
+		)
+	);
+
+	// Extract all technologies form all projects without repitation
+	const allTechnologies = [
+		...new Set(projects?.flatMap((project) => project.technologies)),
+	];
+
 	return (
 		<div className="flex h-full text-slate-500">
-			<ProjectsSidebar />
+			<ProjectsSidebar technologies={allTechnologies} />
 			<div className="flex flex-col w-full">
 				<div className="text-white text-sm border-r border-slate-800 p-2.5 flex gap-8 w-fit">
 					<h1>React Projects</h1>
@@ -22,9 +39,13 @@ const ProjectsPage = () => {
 						<Spinner />
 					) : error ? (
 						<Message variant="danger">{error}</Message>
-					) : (
+					) : filteredProjects == 0 ? (
 						projects?.map((project) => (
-							<ProjectCard key={project.id} project={project} />
+							<ProjectCard key={project._id} project={project} />
+						))
+					) : (
+						filteredProjects?.map((project) => (
+							<ProjectCard key={project._id} project={project} />
 						))
 					)}
 				</div>
