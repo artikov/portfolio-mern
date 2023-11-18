@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 // import SyntaxHighlighter from "react-syntax-highlighter";
 // import CodeComment from "./CodeComment";
 
@@ -13,9 +13,10 @@ import MarkdownFile from "../assets/icons/markdown-file.svg";
 import Down from "../assets/icons/down.svg";
 import Side from "../assets/icons/side.svg";
 
-const AboutMe = ({ data }) => {
-	const [category, setCategory] = useState(null);
+import { useSelector, useDispatch } from "react-redux";
+import { setSelectedSubCategory } from "../services/aboutsSlice";
 
+const AboutMe = () => {
 	//line count
 	// const textRef = useRef(null);
 	// const [lineCount, setLineCount] = useState(3);
@@ -39,36 +40,50 @@ const AboutMe = ({ data }) => {
 	// }, []);
 	// console.log(lineCount);
 
-	useEffect(() => {
-		if (data?.categories?.length > 0) {
-			setCategory(data.categories[0]);
-		}
-	}, [data]);
+	const dispatch = useDispatch();
+	const selectedCategory = useSelector((state) => state.about.selectedCategory);
+	const selectedSubCategory = useSelector(
+		(state) => state.about.selectedSubCategory
+	);
 
-	const handleCategoryChange = (item) => {
-		setCategory(item);
+	useEffect(() => {
+		if (!selectedSubCategory) {
+			dispatch(setSelectedSubCategory(selectedCategory.categories[0]));
+		}
+	}, [selectedCategory, selectedSubCategory, dispatch]);
+
+	const handleSubCategoryChange = (item) => {
+		dispatch(setSelectedSubCategory(item));
 	};
+
+	console.log(selectedCategory);
+	console.log(selectedSubCategory);
 
 	return (
 		<div className="flex flex-col sm:flex-row h-full ">
 			<div className="border-r border-slate-800 min-w-[181px] text-sm">
 				<div className="flex gap-2 border-b border-slate-800 p-2.5 text-white">
 					<img src={Dropdown} alt="" />
-					<h1>{data.title}</h1>
+					<h1>{selectedCategory.title}</h1>
 				</div>
 				<div className="flex flex-col ">
-					{data.categories.map((item, i) => (
+					{selectedCategory.categories.map((item, i) => (
 						<div
 							key={item.category}
-							onClick={() => handleCategoryChange(item)}
+							onClick={() => handleSubCategoryChange(item)}
 							className={
 								"flex items-center gap-2 m-2.5 cursor-pointer hover:text-white ease-in-out transition-all " +
-								(category?.category === item.category && "text-white")
+								(selectedSubCategory?.category === item.category &&
+									"text-white")
 							}
 						>
 							<div className="w-3">
 								<img
-									src={category?.category === item.category ? Down : Side}
+									src={
+										selectedSubCategory?.category === item.category
+											? Down
+											: Side
+									}
 									alt=""
 								/>
 							</div>
@@ -92,7 +107,7 @@ const AboutMe = ({ data }) => {
 			</div>
 			<div className="mt-10">
 				<div className="p-2 border-t border-slate-800 lg:w-[500px] xl:w-[800px]">
-					{category === null ? (
+					{selectedSubCategory === null ? (
 						<Spinner />
 					) : (
 						<>
@@ -100,7 +115,7 @@ const AboutMe = ({ data }) => {
 								{category.content}
 							</div> */}
 
-							<div>{category.content}</div>
+							<div>{selectedSubCategory.content}</div>
 						</>
 					)}
 				</div>

@@ -17,13 +17,8 @@ const technologiesSlice = createSlice({
 				state.selectedTechnologies.push(technology);
 			}
 		},
-		clearSelectedTechnologies: (state) => {
-			state.selectedTechnologies = [];
-		},
 	},
 });
 
-export const { toggleTechnology, clearSelectedTechnologies } =
-	technologiesSlice.actions;
-
+export const { toggleTechnology } = technologiesSlice.actions;
 export default technologiesSlice.reducer;

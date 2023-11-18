@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
 import AboutMe from "../components/AboutMe";
 import Spinner from "../components/Spinner";
@@ -8,24 +8,29 @@ import AboutCertificates from "../components/AboutCertificates";
 
 import AOS from "aos";
 
+import { useSelector, useDispatch } from "react-redux";
+import { setSelectedCategory } from "../services/aboutsSlice";
 import { useFetchAboutsQuery } from "../services/aboutsApiSlice";
 
 const AboutMePage = () => {
 	useEffect(() => {
 		AOS.init();
 	}, []);
+	const dispatch = useDispatch();
+
+	const selectedCategory = useSelector((state) => state.about.selectedCategory);
 
 	const { data: abouts, isLoading, error } = useFetchAboutsQuery();
-	const [selectedCategory, setSelectedCategory] = useState(null);
+	// const [selectedCategory, setSelectedCategory] = useState(null);
 
 	useEffect(() => {
-		if (abouts?.length > 0) {
-			setSelectedCategory(abouts[0]);
+		if (abouts?.length > 0 && !selectedCategory) {
+			dispatch(setSelectedCategory(abouts[0]));
 		}
-	}, [abouts]);
+	}, [abouts, selectedCategory, dispatch]);
 
 	const handleCategoryChange = (item) => {
-		setSelectedCategory(item);
+		dispatch(setSelectedCategory(item));
 	};
 
 	if (isLoading) return <Spinner />;
@@ -48,7 +53,7 @@ const AboutMePage = () => {
 				</div>
 			</div>
 			<div data-aos="fade" className="">
-				{selectedCategory ? <AboutMe data={selectedCategory} /> : <Spinner />}
+				{selectedCategory ? <AboutMe /> : <Spinner />}
 			</div>
 			<div
 				data-aos="fade-up"
