@@ -1,8 +1,5 @@
-import { useEffect } from "react";
-// import SyntaxHighlighter from "react-syntax-highlighter";
-// import CodeComment from "./CodeComment";
+import { useEffect, useRef, useState } from "react";
 
-import PropTypes from "prop-types";
 import Spinner from "./Spinner";
 
 import Dropdown from "../assets/icons/dropdown.svg";
@@ -12,42 +9,51 @@ import BlueFolder from "../assets/icons/blue-folder.svg";
 import MarkdownFile from "../assets/icons/markdown-file.svg";
 import Down from "../assets/icons/down.svg";
 import Side from "../assets/icons/side.svg";
+import CodeComment from "./CodeComment";
 
 import { useSelector, useDispatch } from "react-redux";
 import { setSelectedSubCategory } from "../services/aboutsSlice";
 
 const AboutMe = () => {
 	//line count
-	// const textRef = useRef(null);
-	// const [lineCount, setLineCount] = useState(3);
-
-	// useEffect(() => {
-	// 	function calculateLines() {
-	// 		if (textRef.current) {
-	// 			const divHeight = textRef.current.clientHeight;
-	// 			const lineHeight = parseInt(
-	// 				window.getComputedStyle(textRef.current).lineHeight
-	// 			);
-
-	// 			if (divHeight > lineHeight) {
-	// 				setLineCount(Math.floor(divHeight / lineHeight));
-	// 			}
-	// 		}
-	// 	}
-	// 	calculateLines();
-	// 	window.addEventListener("resize", calculateLines);
-	// 	return () => window.removeEventListener("resize", calculateLines);
-	// }, []);
-	// console.log(lineCount);
-
+	const textRef = useRef(null);
+	const [lineCount, setLineCount] = useState([]);
 	const dispatch = useDispatch();
 	const selectedCategory = useSelector((state) => state.about.selectedCategory);
 	const selectedSubCategory = useSelector(
 		(state) => state.about.selectedSubCategory
 	);
 
+	// Count the number of lines in the text
 	useEffect(() => {
-		if (!selectedSubCategory) {
+		function calculateLines() {
+			if (textRef.current) {
+				const divHeight = textRef.current.clientHeight;
+				const lineHeight = parseInt(
+					window.getComputedStyle(textRef.current).lineHeight
+				);
+
+				if (divHeight > lineHeight) {
+					const calculatedLineCount = Math.floor(divHeight / lineHeight);
+					setLineCount(
+						Array.from({ length: calculatedLineCount + 2 }, (_, index) => index)
+					);
+				}
+			}
+		}
+
+		calculateLines();
+		window.addEventListener("resize", calculateLines);
+
+		return () => window.removeEventListener("resize", calculateLines);
+	}, [selectedSubCategory?.content]);
+
+	// Set the first item in the subcategory
+	useEffect(() => {
+		const checkToSetFirstItem = !selectedCategory.categories.some(
+			(category) => category?.category === selectedSubCategory?.category
+		);
+		if (!selectedSubCategory || checkToSetFirstItem) {
 			dispatch(setSelectedSubCategory(selectedCategory.categories[0]));
 		}
 	}, [selectedCategory, selectedSubCategory, dispatch]);
@@ -55,9 +61,6 @@ const AboutMe = () => {
 	const handleSubCategoryChange = (item) => {
 		dispatch(setSelectedSubCategory(item));
 	};
-
-	console.log(selectedCategory);
-	console.log(selectedSubCategory);
 
 	return (
 		<div className="flex flex-col sm:flex-row h-full ">
@@ -106,26 +109,21 @@ const AboutMe = () => {
 				</div>
 			</div>
 			<div className="mt-10">
-				<div className="p-2 border-t border-slate-800 lg:w-[500px] xl:w-[800px]">
-					{selectedSubCategory === null ? (
-						<Spinner />
-					) : (
-						<>
-							{/* <div ref={textRef} className="hidden">
-								{category.content}
-							</div> */}
-
-							<div>{selectedSubCategory.content}</div>
-						</>
-					)}
+				<div className="p-2 border-t border-slate-800 lg:w-[500px] xl:w-[800px] flex">
+					<CodeComment lines={lineCount} />
+					<div>
+						{selectedSubCategory === null ? (
+							<Spinner />
+						) : (
+							<div className="mt-[24px]" ref={textRef}>
+								{selectedSubCategory.content}
+							</div>
+						)}
+					</div>
 				</div>
 			</div>
 		</div>
 	);
-};
-
-AboutMe.propTypes = {
-	data: PropTypes.object.isRequired,
 };
 
 export default AboutMe;
