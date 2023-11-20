@@ -1,5 +1,16 @@
 import Dropdown from "../assets/icons/dropdown.svg";
-import { DiReact } from "react-icons/di";
+import {
+	SiNodedotjs,
+	SiExpress,
+	SiReact,
+	SiRedux,
+	SiHtml5,
+	SiCss3,
+	SiMongodb,
+	SiJavascript,
+	SiPython,
+	SiTailwindcss,
+} from "react-icons/si";
 
 import { useDispatch, useSelector } from "react-redux";
 import { toggleTechnology } from "../services/technologiesSlice";
@@ -32,7 +43,27 @@ const ProjectsSidebar = ({ technologies }) => {
 							checked={selectedTechnologies.includes(technology)}
 							onChange={() => handleTechnologyChange(technology)}
 						/>
-						<DiReact />
+						{technology === "Node.js" ? (
+							<SiNodedotjs />
+						) : technology === "Express" ? (
+							<SiExpress />
+						) : technology === "React" ? (
+							<SiReact />
+						) : technology === "Redux" ? (
+							<SiRedux />
+						) : technology === "HTML" ? (
+							<SiHtml5 />
+						) : technology === "CSS" ? (
+							<SiCss3 />
+						) : technology === "MongoDB" ? (
+							<SiMongodb />
+						) : technology === "JavaScript" ? (
+							<SiJavascript />
+						) : technology === "Python" ? (
+							<SiPython />
+						) : technology === "Tailwind CSS" ? (
+							<SiTailwindcss />
+						) : null}
 						{technology}
 					</div>
 				))}

@@ -38,7 +38,7 @@ const ProjectsPage = () => {
 					{isLoading ? (
 						<Spinner />
 					) : error ? (
-						<Message variant="danger">{error}</Message>
+						<Message variant="danger">{error.status}</Message>
 					) : filteredProjects == 0 ? (
 						projects?.map((project) => (
 							<ProjectCard key={project._id} project={project} />
