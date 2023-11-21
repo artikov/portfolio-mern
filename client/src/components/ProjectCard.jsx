@@ -7,7 +7,10 @@ const ProjectCard = ({ project }) => {
 
 	return (
 		<div>
-			<div>{project.name}</div>
+			<div className="flex gap-12">
+				<div className="text-indigo-500">{project.name}</div>
+				<span>&#47;&#47; {project.technologies[0]}</span>
+			</div>
 			<div className="border border-slate-800 bg-slate-950 rounded-lg overflow-hidden flex flex-col">
 				<div className="">
 					<img

@@ -31,7 +31,13 @@ const ProjectsPage = () => {
 			<ProjectsSidebar technologies={allTechnologies} />
 			<div className="flex flex-col w-full">
 				<div className="text-white text-sm border-r border-slate-800 p-2.5 flex gap-8 w-fit">
-					<h1>React Projects</h1>
+					<div className="flex gap-2">
+						{selectedTechnologies.length == 0
+							? "all projects"
+							: selectedTechnologies.map((tech) => {
+									return <span key={tech}>{tech};</span>;
+							  })}
+					</div>
 					<p className="text-slate-600">x</p>
 				</div>
 				<div className="border-t border-slate-800 p-4 px-10 grid grid-cols-3 gap-10 overflow-auto ">
