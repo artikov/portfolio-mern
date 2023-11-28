@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import AboutMe from "../components/AboutMe";
 import Spinner from "../components/Spinner";
 import Message from "../components/Message";
-import AboutIcons from "../components/AboutIcons";
+import AboutsSidebar from "../components/AboutsSidebar";
 import AboutCertificates from "../components/AboutCertificates";
 
 import AOS from "aos";
@@ -29,37 +29,21 @@ const AboutMePage = () => {
 		}
 	}, [abouts, selectedCategory, dispatch]);
 
-	const handleCategoryChange = (item) => {
-		dispatch(setSelectedCategory(item));
-	};
-
-	if (isLoading) return <Spinner />;
-
 	if (error) return <Message variant="danger">{error}</Message>;
 
 	return (
 		<div className="flex text-slate-500 h-full">
-			<div data-aos="fade" className="border-r border-slate-800">
-				<div className="flex flex-col mt-2 w-max">
-					{abouts.map((item) => (
-						<div
-							key={item.title}
-							onClick={() => handleCategoryChange(item)}
-							className="m-4"
-						>
-							<AboutIcons icon={item.title} active={selectedCategory} />
-						</div>
-					))}
-				</div>
-			</div>
-			<div data-aos="fade" className="">
-				{selectedCategory ? <AboutMe /> : <Spinner />}
-			</div>
+			<AboutsSidebar abouts={abouts} selectedCategory={selectedCategory} />
+			<div>{selectedCategory ? <AboutMe /> : <Spinner />}</div>
 			<div
 				data-aos="fade-up"
 				className="hidden md:block w-full mt-10 border-l border-t border-slate-800 p-2 overflow-y-hidden"
 			>
-				<AboutCertificates selectedCategory={selectedCategory} />
+				{isLoading ? (
+					<Spinner />
+				) : (
+					<AboutCertificates selectedCategory={selectedCategory} />
+				)}
 			</div>
 		</div>
 	);
