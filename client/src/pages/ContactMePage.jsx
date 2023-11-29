@@ -1,3 +1,4 @@
+import ContactMeCodeSnippet from "../components/ContactMePage/ContactMeCodeSnippet";
 import ContactMeForm from "../components/ContactMePage/ContactMeForm";
 import ContactMeSidebar from "../components/ContactMePage/ContactMeSidebar";
 
@@ -17,7 +18,9 @@ const ContactMePage = () => {
 					<div className="w-1/2 border-r border-slate-800">
 						<ContactMeForm />
 					</div>
-					<div className="w-1/2 ">Code snippet</div>
+					<div className="w-1/2 ">
+						<ContactMeCodeSnippet />
+					</div>
 				</div>
 			</div>
 		</div>
