@@ -111,7 +111,7 @@ const AboutMe = () => {
 			</div>
 			<div>
 				<div className="p-2.5 text-sm flex justify-between max-w-[160px] border-r border-slate-800 text-white">
-					{selectedSubCategory.category}{" "}
+					{selectedSubCategory?.category}
 					<span className="text-slate-700">x</span>
 				</div>
 				<div className="p-2 border-t border-slate-800 lg:w-[500px] xl:w-[800px] flex">

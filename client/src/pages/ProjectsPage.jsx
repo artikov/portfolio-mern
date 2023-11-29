@@ -34,9 +34,9 @@ const ProjectsPage = () => {
 					<div className="flex gap-2">
 						{selectedTechnologies.length == 0
 							? "all projects"
-							: selectedTechnologies.map((tech) => {
-									return <span key={tech}>{tech};</span>;
-							  })}
+							: selectedTechnologies.map((tech) => (
+									<span key={tech}>{tech};</span>
+							  ))}
 					</div>
 					<p className="text-slate-600">x</p>
 				</div>

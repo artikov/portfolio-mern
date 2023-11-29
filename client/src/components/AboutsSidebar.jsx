@@ -33,7 +33,7 @@ const AboutsSidebar = ({ abouts, selectedCategory }) => {
 };
 
 AboutsSidebar.propTypes = {
-	abouts: PropTypes.array.isRequired,
+	abouts: PropTypes.array,
 	selectedCategory: PropTypes.object,
 };
 
