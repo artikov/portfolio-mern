@@ -1,5 +1,5 @@
-import ProjectCard from "../components/ProjectCard";
-import ProjectsSidebar from "../components/ProjectsSidebar";
+import ProjectCard from "../components/ProjectsPage/ProjectCard";
+import ProjectsSidebar from "../components/ProjectsPage/ProjectsSidebar";
 
 import Message from "../components/Message";
 import Spinner from "../components/Spinner";

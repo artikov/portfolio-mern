@@ -1,8 +1,8 @@
-import Dropdown from "../assets/icons/dropdown.svg";
-import Check from "../assets/icons/check.svg";
+import Dropdown from "../../assets/icons/dropdown.svg";
+import Check from "../../assets/icons/check.svg";
 
 import { useDispatch, useSelector } from "react-redux";
-import { toggleTechnology } from "../services/technologiesSlice";
+import { toggleTechnology } from "../../services/technologiesSlice";
 
 import PropTypes from "prop-types";
 import ProjectsIcons from "./ProjectsIcons";

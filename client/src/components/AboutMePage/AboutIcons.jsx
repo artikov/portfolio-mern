@@ -1,6 +1,6 @@
-import HobbiesSVG from "../assets/icons/hobbies.svg";
-import PersonalSVG from "../assets/icons/personal.svg";
-import ProfessionalSVG from "../assets/icons/professional.svg";
+import HobbiesSVG from "../../assets/icons/hobbies.svg";
+import PersonalSVG from "../../assets/icons/personal.svg";
+import ProfessionalSVG from "../../assets/icons/professional.svg";
 
 import PropTypes from "prop-types";
 

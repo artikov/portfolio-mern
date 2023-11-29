@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 
-import AboutMe from "../components/AboutMe";
+import AboutMe from "../components/AboutMePage/AboutMe";
 import Spinner from "../components/Spinner";
 import Message from "../components/Message";
-import AboutsSidebar from "../components/AboutsSidebar";
-import AboutCertificates from "../components/AboutCertificates";
+import AboutsSidebar from "../components/AboutMePage/AboutsSidebar";
+import AboutCertificates from "../components/AboutMePage/AboutCertificates";
 
 import AOS from "aos";
 

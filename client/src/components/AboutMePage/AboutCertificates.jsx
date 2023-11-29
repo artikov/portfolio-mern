@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import Spinner from "./Spinner";
+import Spinner from "../Spinner";
 
 import PropTypes from "prop-types";
 

@@ -1,4 +1,5 @@
-import ContactMeSidebar from "../components/ContactMeSidebar";
+import ContactMeForm from "../components/ContactMePage/ContactMeForm";
+import ContactMeSidebar from "../components/ContactMePage/ContactMeSidebar";
 
 const ContactMePage = () => {
 	return (
@@ -13,7 +14,9 @@ const ContactMePage = () => {
 					</div>
 				</div>
 				<div className="flex w-full h-full">
-					<div className="w-1/2 border-r border-slate-800">Contact Form</div>
+					<div className="w-1/2 border-r border-slate-800">
+						<ContactMeForm />
+					</div>
 					<div className="w-1/2 ">Code snippet</div>
 				</div>
 			</div>

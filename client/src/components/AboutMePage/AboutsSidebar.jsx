@@ -2,7 +2,7 @@ import AboutIcons from "./AboutIcons";
 
 import { useDispatch } from "react-redux";
 
-import { setSelectedCategory } from "../services/aboutsSlice";
+import { setSelectedCategory } from "../../services/aboutsSlice";
 
 import PropTypes from "prop-types";
 

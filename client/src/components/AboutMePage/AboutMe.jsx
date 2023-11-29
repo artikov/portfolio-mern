@@ -1,18 +1,18 @@
 import { useEffect, useRef, useState } from "react";
 
-import Spinner from "./Spinner";
+import Spinner from "../Spinner";
 
-import Dropdown from "../assets/icons/dropdown.svg";
-import RedFolder from "../assets/icons/red-folder.svg";
-import GreenFolder from "../assets/icons/green-folder.svg";
-import BlueFolder from "../assets/icons/blue-folder.svg";
-import MarkdownFile from "../assets/icons/markdown-file.svg";
-import Down from "../assets/icons/down.svg";
-import Side from "../assets/icons/side.svg";
-import CodeComment from "./CodeComment";
+import Dropdown from "../../assets/icons/dropdown.svg";
+import RedFolder from "../../assets/icons/red-folder.svg";
+import GreenFolder from "../../assets/icons/green-folder.svg";
+import BlueFolder from "../../assets/icons/blue-folder.svg";
+import MarkdownFile from "../../assets/icons/markdown-file.svg";
+import Down from "../../assets/icons/down.svg";
+import Side from "../../assets/icons/side.svg";
+import CodeComment from "../CodeComment";
 
 import { useSelector, useDispatch } from "react-redux";
-import { setSelectedSubCategory } from "../services/aboutsSlice";
+import { setSelectedSubCategory } from "../../services/aboutsSlice";
 
 const AboutMe = () => {
 	//line count
