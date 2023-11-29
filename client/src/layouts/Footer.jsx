@@ -7,7 +7,7 @@ const Footer = () => {
 		"px-4 py-2 border-r border-slate-800 hover:bg-slate-800 hover:text-white flex items-center hover:ease-in-out duration-300";
 
 	return (
-		<footer className="border-t border-slate-800 text-slate-500 absolute bottom-0 w-full">
+		<footer className="border-t border-slate-800 text-slate-500 bg-slate-900 absolute bottom-0 w-full">
 			<div className="flex justify-between">
 				<div className="flex">
 					<div className="hidden md:flex px-4 py-2 border-r border-slate-800">

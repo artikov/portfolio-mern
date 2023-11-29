@@ -29,7 +29,7 @@ const ContactMeForm = () => {
 	};
 
 	return (
-		<div className="text-slate-500 text-sm justify-center m-24">
+		<div className="text-slate-500 text-sm justify-center m-12 xl:m-24">
 			<form onSubmit={handleSubmit}>
 				<div className="flex flex-col">
 					<label htmlFor="name" className="pb-1">

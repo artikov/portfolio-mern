@@ -14,11 +14,11 @@ const ContactMePage = () => {
 						contacts <span className="text-slate-600">x</span>
 					</div>
 				</div>
-				<div className="flex w-full h-full">
-					<div className="w-1/2 border-r border-slate-800">
+				<div className="flex flex-col lg:flex-row w-full h-full overflow-auto ">
+					<div className="md:border-b lg:border-r lg:w-1/2 border-slate-800">
 						<ContactMeForm />
 					</div>
-					<div className="w-1/2 ">
+					<div className="hidden sm:block lg:w-1/2 xl:mt-12">
 						<ContactMeCodeSnippet />
 					</div>
 				</div>
