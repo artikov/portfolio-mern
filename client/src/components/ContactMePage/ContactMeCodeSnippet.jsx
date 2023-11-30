@@ -37,7 +37,7 @@ const ContactMeCodeSnippet = () => {
 	const sContainer = containerWidth < 495;
 	const xsContainer = containerWidth < 440;
 	const codeString = `
-const button = ${sContainer ? `\n` : ""}document.querySelector(button);
+const button = ${sContainer ? `\n` : ""}document.querySelector('#sendButton');
 
 const message = {
 	name: "John Doe",
