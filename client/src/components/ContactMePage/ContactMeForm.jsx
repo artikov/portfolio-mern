@@ -1,13 +1,19 @@
 import { useState } from "react";
 
+import Spinner from "../Spinner";
+import Message from "../Message";
+
+import { usePostMessageMutation } from "../../services/messagesApiSlice";
+
 const ContactMeForm = () => {
 	const [formData, setFormData] = useState({
 		name: "",
 		email: "",
 		message: "",
 	});
-
 	const { name, email, message } = formData;
+
+	const [postMessage, { isLoading, error }] = usePostMessageMutation();
 
 	const resetForm = () => {
 		setFormData({
@@ -17,16 +23,25 @@ const ContactMeForm = () => {
 		});
 	};
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
-		console.log(formData);
-		resetForm();
+
+		try {
+			await postMessage(formData).unwrap();
+			resetForm();
+		} catch (error) {
+			console.log(error);
+		}
 	};
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
 		setFormData((prevData) => ({ ...prevData, [name]: value }));
 	};
+
+	if (error) {
+		return <Message variant="red">{error.data.message}</Message>;
+	}
 
 	return (
 		<div className="text-slate-500 text-sm justify-center m-12 xl:m-24">
@@ -76,7 +91,7 @@ const ContactMeForm = () => {
 					type="submit"
 					className="p-2 mt-6 bg-slate-800 text-white text-sm rounded-md hover:bg-slate-700 transition-all duration-300 ease-in-out"
 				>
-					submit-message
+					{isLoading ? <Spinner /> : "submit-message"}
 				</button>
 			</form>
 		</div>
