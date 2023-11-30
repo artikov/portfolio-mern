@@ -1,9 +1,16 @@
 import { useRef, useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
+import { selectFormData } from "../../services/messageSlice";
+
 const ContactMeCodeSnippet = () => {
+	const formData = useSelector(selectFormData);
+
+	const { name, email, message } = formData;
+
 	const codeContainerRef = useRef(null);
 	const [containerWidth, setContainerWidth] = useState(0);
 
@@ -40,9 +47,9 @@ const ContactMeCodeSnippet = () => {
 const button = ${sContainer ? `\n` : ""}document.querySelector('#sendButton');
 
 const message = {
-	name: "John Doe",
-	email: "",
-	message: "",
+	name: "${name ? name : "John Doe"}",
+	email: "${email}",
+	message: "${message}",
 	date: "${today}"
 };
 

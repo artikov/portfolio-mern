@@ -1,26 +1,25 @@
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import Spinner from "../Spinner";
 import Message from "../Message";
 
 import { usePostMessageMutation } from "../../services/messagesApiSlice";
+import {
+	setFormData,
+	resetFormData,
+	selectFormData,
+} from "../../services/messageSlice";
 
 const ContactMeForm = () => {
-	const [formData, setFormData] = useState({
-		name: "",
-		email: "",
-		message: "",
-	});
+	const dispatch = useDispatch();
+	const formData = useSelector(selectFormData);
+
 	const { name, email, message } = formData;
 
 	const [postMessage, { isLoading, error }] = usePostMessageMutation();
 
 	const resetForm = () => {
-		setFormData({
-			name: "",
-			email: "",
-			message: "",
-		});
+		dispatch(resetFormData());
 	};
 
 	const handleSubmit = async (e) => {
@@ -36,7 +35,7 @@ const ContactMeForm = () => {
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
-		setFormData((prevData) => ({ ...prevData, [name]: value }));
+		dispatch(setFormData({ ...formData, [name]: value }));
 	};
 
 	if (error) {
