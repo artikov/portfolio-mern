@@ -12,6 +12,12 @@ body {
 	margin: 20px;
 	cursor: default;
 }
+@media screen and (min-width: 1848px) {
+	body {
+		max-width: 1800px;
+		margin: 20px auto;
+	}
+}
 @media screen and (max-width: 1024px) {
 	body {
 		margin: 10px;
@@ -41,6 +47,44 @@ body {
 		#4d5bce -100%,
 		transparent 100%
 	);
+}
+
+@media screen and (max-width: 640px) {
+	.gradient-background-emerlad {
+		transform: rotate(0deg);
+		background-image: radial-gradient(
+			closest-side at 200px 190px,
+			#43d9ad -100%,
+			transparent 100%
+		);
+	}
+	.gradient-background-indigo {
+		transform: rotate(0deg);
+		background-image: radial-gradient(
+			closest-side at 200px 190px,
+			#4d5bce -100%,
+			transparent 100%
+		);
+	}
+}
+
+@media screen and (max-width: 400px) {
+	.gradient-background-emerlad {
+		transform: rotate(0deg);
+		background-image: radial-gradient(
+			closest-side at 140px 150px,
+			#43d9ad -100%,
+			transparent 100%
+		);
+	}
+	.gradient-background-indigo {
+		transform: rotate(0deg);
+		background-image: radial-gradient(
+			closest-side at 160px 140px,
+			#4d5bce -100%,
+			transparent 100%
+		);
+	}
 }
 
 /*************** Code Snippet Styles **************/

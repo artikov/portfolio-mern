@@ -57,8 +57,8 @@ const HomePage = () => {
 					))}
 				</div>
 			</div>
-			<div className="absolute sm:w-[454px] sm:h-[492px] sm:bottom-14 sm:right-10 gradient-background-indigo -z-10"></div>
-			<div className="absolute sm:w-[454px] sm:h-[492px] sm:top-24 sm:right-1/4 gradient-background-emerlad -z-10"></div>
+			<div className="absolute w-full h-1/2 top-60 left-2 sm:left-auto sm:w-[454px] sm:h-[492px] sm:bottom-14 sm:right-10 gradient-background-indigo -z-10"></div>
+			<div className="absolute w-full h-3/4 sm:w-[454px] sm:h-[492px] sm:top-24 sm:right-1/4 gradient-background-emerlad -z-10"></div>
 		</div>
 	);
 };
