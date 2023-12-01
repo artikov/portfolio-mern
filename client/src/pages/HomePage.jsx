@@ -16,8 +16,8 @@ const HomePage = () => {
 			<div data-aos="fade" className="flex flex-col gap-14 lg:w-1/2 ">
 				<div>
 					<p className="text-lg text-slate-200">Hello World. I am</p>
-					<h1 className="text-5xl text-slate-200">Oybek Artikov</h1>
-					<h2 className="text-2xl text-indigo-600">
+					<h1 className="text-3xl md:text-5xl text-slate-200">Oybek Artikov</h1>
+					<h2 className="text-xl md:text-2xl text-indigo-600">
 						&gt; Full Stack Developer (MERN)
 					</h2>
 				</div>
