@@ -13,7 +13,7 @@ const HomePage = () => {
 
 	return (
 		<div className="flex justify-center px-10 lg:px-40 gap-5 items-center h-full">
-			<div data-aos="fade" className="flex flex-col gap-14 lg:w-1/2 z-10">
+			<div data-aos="fade" className="flex flex-col gap-14 lg:w-1/2 ">
 				<div>
 					<p className="text-lg text-slate-200">Hello World. I am</p>
 					<h1 className="text-5xl text-slate-200">Oybek Artikov</h1>

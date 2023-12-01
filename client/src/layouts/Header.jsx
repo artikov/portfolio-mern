@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
+import Hamburger from "../components/Hamburger";
+
 const Header = () => {
 	const [menuOpen, setMenuOpen] = useState(false);
 
@@ -13,22 +15,23 @@ const Header = () => {
 	const navActive = navDefault + " border-b border-b-orange-300 text-white";
 
 	return (
-		<header className="border-b border-slate-800 top-0 absolute w-full bg-slate-900 md:bg-transparent">
-			<nav className="text-slate-500 flex flex-col md:flex-row ">
-				<NavLink
-					to={`/`}
-					className={
-						navDefault + " w-full md:w-auto pr-32 p-2 border-r-0 md:border-r"
-					}
-				>
-					Oybek Artikov
-				</NavLink>
+		<header className="border-b border-slate-800 top-0 absolute w-full bg-slate-900 md:bg-transparent z-10">
+			<nav className="text-slate-500 flex flex-col md:flex-row justify-between">
+				<div className="flex">
+					<NavLink
+						to={`/`}
+						className={
+							navDefault +
+							" w-full md:w-auto md:pr-28 p-2 border-r-0 md:border-r"
+						}
+					>
+						Oybek Artikov
+					</NavLink>
 
-				{/* MOBILE NAVIGATION BUTTON */}
-				<div className="md:hidden border-l border-slate-800">
-					<button className="px-4 py-2" onClick={toggleMenu}>
-						Menu
-					</button>
+					{/* MOBILE NAVIGATION BUTTON */}
+					<div className="md:hidden border-l border-slate-800 px-4 py-2">
+						<Hamburger isOpen={menuOpen} toggleMenu={toggleMenu} />
+					</div>
 				</div>
 
 				<div
@@ -55,7 +58,11 @@ const Header = () => {
 						_projects
 					</NavLink>
 				</div>
-				<div className={`md:ml-auto md:flex ${menuOpen ? "block" : "hidden"}`}>
+				<div
+					className={`md:ml-auto md:flex md:pb-0 pb-4 ${
+						menuOpen ? "block" : "hidden"
+					}`}
+				>
 					<NavLink
 						to={`contact`}
 						className={({ isActive }) =>
