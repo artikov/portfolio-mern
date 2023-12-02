@@ -21,7 +21,6 @@ const AboutMePage = () => {
 	const selectedCategory = useSelector((state) => state.about.selectedCategory);
 
 	const { data: abouts, isLoading, error } = useFetchAboutsQuery();
-	// const [selectedCategory, setSelectedCategory] = useState(null);
 
 	useEffect(() => {
 		if (abouts?.length > 0 && !selectedCategory) {
@@ -32,7 +31,7 @@ const AboutMePage = () => {
 	if (error) return <Message variant="danger">{error}</Message>;
 
 	return (
-		<div className="flex text-slate-500 h-full">
+		<div className="flex flex-col md:flex-row text-slate-500 h-full">
 			<AboutsSidebar abouts={abouts} selectedCategory={selectedCategory} />
 			<div>{selectedCategory ? <AboutMe /> : <Spinner />}</div>
 			<div
