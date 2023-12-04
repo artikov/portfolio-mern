@@ -56,8 +56,7 @@ const AboutsSidebar = ({ abouts, selectedCategory }) => {
 									key={item.title}
 									title={item.title}
 									links={item.categories}
-									selectedCategory={selectedCategory}
-									handleCategoryChange={handleCategoryChange}
+									item={item}
 								/>
 						  ))}
 				</div>

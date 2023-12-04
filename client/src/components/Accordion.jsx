@@ -1,18 +1,26 @@
 import { useState } from "react";
 
+import AboutsStyleSubCategories from "./AboutMePage/AboutsStyleSubCategories";
+
+import { useSelector } from "react-redux";
+
 import PropTypes from "prop-types";
 
 const Accordion = ({ title, links }) => {
 	const [isOpen, setIsOpen] = useState(false);
+
+	const selectedSubCategory = useSelector(
+		(state) => state.about.selectedSubCategory
+	);
 
 	const toggleAccordion = () => {
 		setIsOpen(!isOpen);
 	};
 
 	return (
-		<div className="bg-slate-800 mb-2 text-white">
+		<div className="bg-slate-800 mb-2">
 			<div
-				className="flex items-center gap-2 p-2 mx-2 cursor-pointer"
+				className="flex items-center gap-2 p-2 mx-2 cursor-pointer text-white"
 				onClick={toggleAccordion}
 			>
 				<div className="transform transition-transform">
@@ -53,12 +61,13 @@ const Accordion = ({ title, links }) => {
 			{isOpen && (
 				<div className="p-4 bg-slate-900">
 					<ul>
-						{links?.map((link, index) => (
-							<li key={index} className="mb-2">
-								<a href={link.url} className="text-blue-500">
-									{link.category}
-								</a>
-							</li>
+						{links?.map((link, i) => (
+							<AboutsStyleSubCategories
+								key={i}
+								i={i}
+								item={link}
+								selectedSubCategory={selectedSubCategory}
+							/>
 						))}
 					</ul>
 				</div>
@@ -70,6 +79,7 @@ const Accordion = ({ title, links }) => {
 Accordion.propTypes = {
 	title: PropTypes.string,
 	links: PropTypes.array,
+	item: PropTypes.object,
 };
 
 export default Accordion;

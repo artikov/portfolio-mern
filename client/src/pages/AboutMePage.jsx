@@ -28,10 +28,10 @@ const AboutMePage = () => {
 		}
 	}, [abouts, selectedCategory, dispatch]);
 
-	if (error) return <Message variant="danger">{error}</Message>;
+	if (error) return <Message variant="danger">{error.status}</Message>;
 
 	return (
-		<div className="flex flex-col md:flex-row text-slate-500 h-full">
+		<div className="flex flex-col md:flex-row text-slate-500 h-full overflow-auto">
 			<AboutsSidebar abouts={abouts} selectedCategory={selectedCategory} />
 			<div>{selectedCategory ? <AboutMe /> : <Spinner />}</div>
 			<div
