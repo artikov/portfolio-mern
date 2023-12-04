@@ -10,12 +10,11 @@ const Accordion = ({ title, links }) => {
 	};
 
 	return (
-		<div className="border border-gray-300 mb-2 rounded">
+		<div className="bg-slate-800 mb-2 text-white">
 			<div
-				className="flex items-center justify-between p-4 cursor-pointer"
+				className="flex items-center gap-2 p-2 mx-2 cursor-pointer"
 				onClick={toggleAccordion}
 			>
-				<div>{title}</div>
 				<div className="transform transition-transform">
 					{isOpen ? (
 						<svg
@@ -49,9 +48,10 @@ const Accordion = ({ title, links }) => {
 						</svg>
 					)}
 				</div>
+				<div>{title}</div>
 			</div>
 			{isOpen && (
-				<div className="p-4">
+				<div className="p-4 bg-slate-900">
 					<ul>
 						{links?.map((link, index) => (
 							<li key={index} className="mb-2">

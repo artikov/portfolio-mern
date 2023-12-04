@@ -1,4 +1,7 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
+
+import { useState, useEffect } from "react";
+
 import AboutIcons from "./AboutIcons";
 import Accordion from "../Accordion";
 import AboutsSubCategoriesSidebar from "./AboutsSubCategoriesSidebar";
@@ -17,13 +20,28 @@ const AboutsSidebar = ({ abouts, selectedCategory }) => {
 	};
 
 	// console.log(abouts);
-	const mobile = window.innerWidth < 768;
+	const [isMobile, setMobile] = useState(window.innerWidth < 768);
+
+	// Handle navigation menu status on window resize
+	useEffect(() => {
+		const updateWindowDimensions = () => {
+			setMobile(window.innerWidth < 768);
+		};
+
+		updateWindowDimensions();
+
+		window.addEventListener("resize", updateWindowDimensions);
+
+		return () => {
+			window.removeEventListener("resize", updateWindowDimensions);
+		};
+	}, []);
 
 	return (
 		<>
 			<div className="border-r border-slate-800">
-				<div className="flex flex-col mt-2 w-max">
-					{!mobile
+				<div className="flex flex-col mt-2 md:w-max">
+					{!isMobile
 						? abouts?.map((item) => (
 								<div
 									key={item.title}
@@ -44,7 +62,7 @@ const AboutsSidebar = ({ abouts, selectedCategory }) => {
 						  ))}
 				</div>
 			</div>
-			<AboutsSubCategoriesSidebar />
+			{!isMobile && <AboutsSubCategoriesSidebar />}
 		</>
 	);
 };

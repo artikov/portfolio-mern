@@ -15,6 +15,8 @@ const AboutMe = () => {
 		(state) => state.about.selectedSubCategory
 	);
 
+	const selectedCategory = useSelector((state) => state.about.selectedCategory);
+
 	// Count the number of lines in the text
 	useEffect(() => {
 		function calculateLines() {
@@ -41,18 +43,24 @@ const AboutMe = () => {
 
 	return (
 		<div className="flex flex-col h-full ">
-			<div className="p-2.5 text-sm flex justify-between max-w-[160px] border-r border-slate-800 text-white">
+			<div className="p-2.5 text-sm hidden md:flex justify-between max-w-[160px] border-r border-slate-800 text-white">
 				{selectedSubCategory?.category}
 				<span className="text-slate-700">x</span>
 			</div>
-			<div className="p-2 border-t border-slate-800 lg:w-[500px] xl:w-[800px] flex">
+			<div className="md:hidden p-4">
+				<span className="text-white">
+					&#47;&#47; {selectedCategory?.title}{" "}
+				</span>
+				&#47; {selectedSubCategory?.category}
+			</div>
+			<div className="p-4 md:p-2 border-t border-slate-800 lg:w-[500px] xl:w-[800px] flex">
 				<CodeComment lines={lineCount} />
 				<div>
 					{selectedSubCategory === null ? (
 						<Spinner />
 					) : (
 						<div className="mt-[24px]" ref={textRef}>
-							{selectedSubCategory.content}
+							{selectedSubCategory?.content}
 						</div>
 					)}
 				</div>

@@ -1,34 +1,27 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
 import Hamburger from "../components/Hamburger";
 
 const Header = () => {
-	const navRef = useRef(0);
-	const [navWidth, setNavWidth] = useState(0);
-
 	const [menuOpen, setMenuOpen] = useState(false);
 
 	// Handle navigation menu status on window resize
 	useEffect(() => {
 		const updateNavWidht = () => {
-			if (navRef.current) {
-				const width = navRef.current.offsetWidth;
-				setNavWidth(width);
+			if (window.innerWidth > 768) {
+				setMenuOpen(false);
 			}
 		};
 
 		updateNavWidht();
 
-		if (navWidth > 700) {
-			setMenuOpen(false);
-		}
 		window.addEventListener("resize", updateNavWidht);
 
 		return () => {
 			window.removeEventListener("resize", updateNavWidht);
 		};
-	}, [navRef, navWidth]);
+	}, []);
 
 	const toggleMenu = () => {
 		setMenuOpen(!menuOpen);
@@ -53,7 +46,6 @@ const Header = () => {
 
 	return (
 		<header
-			ref={navRef}
 			className={`border-b border-slate-800 top-0 absolute w-full bg-slate-900 md:bg-transparent z-10 h-full`}
 			style={menuOpen ? navMenuStyles.navOpen : navMenuStyles.navClosed}
 		>

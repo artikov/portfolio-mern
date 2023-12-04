@@ -22,11 +22,11 @@ const AboutsSubCategoriesSidebar = () => {
 
 	// Set the first item in the subcategory
 	useEffect(() => {
-		const checkToSetFirstItem = !selectedCategory.categories.some(
+		const checkToSetFirstItem = !selectedCategory?.categories.some(
 			(category) => category?.category === selectedSubCategory?.category
 		);
 		if (!selectedSubCategory || checkToSetFirstItem) {
-			dispatch(setSelectedSubCategory(selectedCategory.categories[0]));
+			dispatch(setSelectedSubCategory(selectedCategory?.categories[0]));
 		}
 	}, [selectedCategory, selectedSubCategory, dispatch]);
 
@@ -42,7 +42,7 @@ const AboutsSubCategoriesSidebar = () => {
 					<h1>{selectedCategory?.title}</h1>
 				</div>
 				<div className="flex flex-col ">
-					{selectedCategory.categories.map((item, i) => (
+					{selectedCategory?.categories?.map((item, i) => (
 						<div
 							key={item.category}
 							onClick={() => handleSubCategoryChange(item)}
