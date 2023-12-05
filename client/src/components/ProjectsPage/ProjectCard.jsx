@@ -7,7 +7,7 @@ const ProjectCard = ({ project }) => {
 
 	return (
 		<div>
-			<div className="flex justify-between text-xs md:text-base">
+			<div className="flex justify-between">
 				<div className="text-indigo-500">{project.name}</div>
 				<span>&#47;&#47;{project.technologies[0]}</span>
 			</div>

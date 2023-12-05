@@ -12,19 +12,9 @@ const Header = () => {
 
 	// Handle navigation menu status on window resize
 	useEffect(() => {
-		const updateIfNotMobile = () => {
-			if (!isMobile) {
-				setMenuOpen(false);
-			}
-		};
-
-		updateIfNotMobile();
-
-		window.addEventListener("resize", updateIfNotMobile);
-
-		return () => {
-			window.removeEventListener("resize", updateIfNotMobile);
-		};
+		if (!isMobile) {
+			setMenuOpen(false);
+		}
 	}, [isMobile]);
 
 	const toggleMenu = () => {

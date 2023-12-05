@@ -29,9 +29,10 @@ const ProjectsPage = () => {
 
 	return (
 		<div className="flex flex-col md:flex-row h-full text-slate-500 overflow-auto">
+			<h1 className="md:hidden p-4 text-white">_projects</h1>
 			<ProjectsSidebar technologies={allTechnologies} />
 			<div className="flex flex-col w-full">
-				<div className="text-white text-sm border-r border-slate-800 p-2.5 flex gap-8 w-fit">
+				<div className="text-white text-sm border-r border-slate-800 p-2.5 hidden md:flex gap-8 w-fit">
 					<div className="flex gap-2">
 						{selectedTechnologies.length == 0
 							? "all projects"
@@ -41,7 +42,18 @@ const ProjectsPage = () => {
 					</div>
 					<p className="text-slate-600">x</p>
 				</div>
-				<div className="border-t border-slate-800 p-4 px-10 grid grid-cols-3 gap-10 overflow-auto ">
+				<div className="md:hidden text-white p-4">
+					<span>&#47;&#47;projects </span>
+					<span className="text-slate-500">
+						&#47;
+						{selectedTechnologies.length == 0
+							? ` all`
+							: selectedTechnologies.map((tech) => (
+									<span key={tech}> {tech}; </span>
+							  ))}
+					</span>
+				</div>
+				<div className="md:border-t border-slate-800 p-4 md:px-10 grid md:grid-cols-2 lg:grid-cols-3 gap-10 overflow-auto ">
 					{isLoading ? (
 						<Spinner />
 					) : error ? (
