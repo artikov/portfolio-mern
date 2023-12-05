@@ -31,23 +31,11 @@ const Header = () => {
 		"text-sm leading-6 px-4 py-2 md:border-r border-slate-800 hover:bg-slate-800 hover:text-white hover:ease-in-out duration-300";
 	const navActive = navDefault + " border-b border-b-orange-300 text-white";
 
-	const navMenuStyles = {
-		navOpen: {
-			maxHeight: "1000px",
-			transition: "max-height 0.6s ease-in-out",
-			overflow: "hidden",
-		},
-		navClosed: {
-			maxHeight: "40px",
-			transition: "max-height 0.6s ease-in-out",
-			overflow: "hidden",
-		},
-	};
-
 	return (
 		<header
-			className={`border-b border-slate-800 top-0 absolute w-full bg-slate-900 md:bg-transparent z-10 h-full`}
-			style={menuOpen ? navMenuStyles.navOpen : navMenuStyles.navClosed}
+			className={`border-b border-slate-800 top-0 absolute w-full bg-slate-900 md:bg-transparent z-10 h-full ${
+				menuOpen ? "nav-open" : "nav-closed"
+			}`}
 		>
 			<nav
 				className={`text-slate-500 flex flex-col md:flex-row justify-between ${

@@ -58,22 +58,24 @@ const Accordion = ({ title, subCategories, category, isMobile }) => {
 				</div>
 				<div>{title}</div>
 			</div>
-			{isOpen && (
-				<div className="p-4 bg-slate-900">
-					<ul>
-						{subCategories?.map((subCategory, i) => (
-							<AboutsStyleSubCategories
-								key={i}
-								i={i}
-								subCategory={subCategory}
-								category={category}
-								selectedSubCategory={selectedSubCategory}
-								isMobile={isMobile}
-							/>
-						))}
-					</ul>
-				</div>
-			)}
+			<div
+				className={`px-4 bg-slate-900 accordion-content ${
+					isOpen ? "open" : ""
+				}`}
+			>
+				<ul>
+					{subCategories?.map((subCategory, i) => (
+						<AboutsStyleSubCategories
+							key={i}
+							i={i}
+							subCategory={subCategory}
+							category={category}
+							selectedSubCategory={selectedSubCategory}
+							isMobile={isMobile}
+						/>
+					))}
+				</ul>
+			</div>
 		</div>
 	);
 };

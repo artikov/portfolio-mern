@@ -166,3 +166,28 @@ body {
 		transform: translateY(-50%);
 	}
 }
+
+/* ACCORDION SCROLL DOWN AND UP ANIMATION STYLES */
+.accordion-content {
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.3s ease-in-out;
+}
+
+/* Styles for when the accordion is open */
+.accordion-content.open {
+	max-height: 300px; /* Adjust the height according to your content */
+	transition: max-height 0.3s ease-in-out;
+}
+
+/* NAVBAR SCROLL DOWN AND UP ANIMATION STYLES */
+.nav-open {
+	max-height: 1000px;
+	transition: max-height 0.6s ease-in-out;
+	overflow: hidden;
+}
+.nav-closed {
+	max-height: 40px;
+	transition: max-height 0.6s ease-in-out;
+	overflow: hidden;
+}
