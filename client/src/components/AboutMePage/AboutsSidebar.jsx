@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 
 import AboutIcons from "./AboutIcons";
-import Accordion from "../Accordion";
+import Accordion from "./AboutsAccordion";
 import AboutsSubCategoriesSidebar from "./AboutsSubCategoriesSidebar";
 
 import { useDispatch } from "react-redux";
@@ -42,21 +42,21 @@ const AboutsSidebar = ({ abouts, selectedCategory }) => {
 			<div className="border-r border-slate-800">
 				<div className="flex flex-col mt-2 md:w-max">
 					{!isMobile
-						? abouts?.map((item) => (
+						? abouts?.map((category) => (
 								<div
-									key={item.title}
-									onClick={() => handleCategoryChange(item)}
+									key={category.title}
+									onClick={() => handleCategoryChange(category)}
 									className="m-4 flex items-center gap-2"
 								>
-									<AboutIcons icon={item.title} active={selectedCategory} />
+									<AboutIcons icon={category.title} active={selectedCategory} />
 								</div>
 						  ))
-						: abouts?.map((item) => (
+						: abouts?.map((category) => (
 								<Accordion
-									key={item.title}
-									title={item.title}
-									links={item.categories}
-									item={item}
+									key={category.title}
+									title={category.title}
+									subCategories={category.categories}
+									category={category}
 									isMobile={isMobile}
 								/>
 						  ))}

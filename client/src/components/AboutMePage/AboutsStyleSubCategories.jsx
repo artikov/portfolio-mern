@@ -15,7 +15,7 @@ import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 
 const AboutsStyleSubCategories = ({
-	item,
+	subCategory,
 	selectedSubCategory,
 	i,
 	category,
@@ -32,16 +32,21 @@ const AboutsStyleSubCategories = ({
 
 	return (
 		<div
-			key={item.category}
-			onClick={() => handleSubCategoryChange(item, category)}
+			key={subCategory?.category}
+			onClick={() => handleSubCategoryChange(subCategory, category)}
 			className={
 				"flex items-center gap-2 m-2.5 cursor-pointer hover:text-white ease-in-out transition-all " +
-				(selectedSubCategory?.category === item.category && "text-white")
+				(selectedSubCategory?.category === subCategory?.category &&
+					"text-white")
 			}
 		>
 			<div className="w-3">
 				<img
-					src={selectedSubCategory?.category === item.category ? Down : Side}
+					src={
+						selectedSubCategory?.category === subCategory?.category
+							? Down
+							: Side
+					}
 					alt=""
 				/>
 			</div>
@@ -58,17 +63,18 @@ const AboutsStyleSubCategories = ({
 				className=""
 				alt=""
 			/>
-			<div className="">{item.category}</div>
+			<div className="">{subCategory?.category}</div>
 		</div>
 	);
 };
 
 AboutsStyleSubCategories.propTypes = {
-	item: PropTypes.object,
+	subCategory: PropTypes.object,
 	handleSubCategoryChange: PropTypes.func,
 	selectedSubCategory: PropTypes.object,
 	i: PropTypes.number,
 	category: PropTypes.object,
+	isMobile: PropTypes.bool,
 };
 
 export default AboutsStyleSubCategories;

@@ -1,12 +1,12 @@
 import { useState } from "react";
 
-import AboutsStyleSubCategories from "./AboutMePage/AboutsStyleSubCategories";
+import AboutsStyleSubCategories from "./AboutsStyleSubCategories";
 
 import { useSelector } from "react-redux";
 
 import PropTypes from "prop-types";
 
-const Accordion = ({ title, links, item, isMobile }) => {
+const Accordion = ({ title, subCategories, category, isMobile }) => {
 	const [isOpen, setIsOpen] = useState(false);
 
 	const selectedSubCategory = useSelector(
@@ -61,12 +61,12 @@ const Accordion = ({ title, links, item, isMobile }) => {
 			{isOpen && (
 				<div className="p-4 bg-slate-900">
 					<ul>
-						{links?.map((link, i) => (
+						{subCategories?.map((subCategory, i) => (
 							<AboutsStyleSubCategories
 								key={i}
 								i={i}
-								item={link}
-								category={item}
+								subCategory={subCategory}
+								category={category}
 								selectedSubCategory={selectedSubCategory}
 								isMobile={isMobile}
 							/>
@@ -80,8 +80,9 @@ const Accordion = ({ title, links, item, isMobile }) => {
 
 Accordion.propTypes = {
 	title: PropTypes.string,
-	links: PropTypes.array,
-	item: PropTypes.object,
+	subCategories: PropTypes.array,
+	category: PropTypes.object,
+	isMobile: PropTypes.bool,
 };
 
 export default Accordion;

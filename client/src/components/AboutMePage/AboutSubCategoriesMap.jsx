@@ -10,10 +10,10 @@ const AboutSubCategoriesMap = () => {
 
 	return (
 		<div className="flex flex-col ">
-			{selectedCategory?.categories?.map((item, i) => (
+			{selectedCategory?.categories?.map((subCategory, i) => (
 				<AboutsStyleSubCategories
 					key={i}
-					item={item}
+					subCategory={subCategory}
 					selectedSubCategory={selectedSubCategory}
 					i={i}
 				/>
