@@ -2,11 +2,14 @@ import { useState } from "react";
 
 import AboutsStyleSubCategories from "./AboutsStyleSubCategories";
 
+import Down from "../../assets/icons/dropdown.svg";
+import Side from "../../assets/icons/dropdown-side.svg";
+
 import { useSelector } from "react-redux";
 
 import PropTypes from "prop-types";
 
-const Accordion = ({ title, subCategories, category, isMobile }) => {
+const Accordion = ({ title, subCategories, category }) => {
 	const [isOpen, setIsOpen] = useState(false);
 
 	const selectedSubCategory = useSelector(
@@ -24,37 +27,7 @@ const Accordion = ({ title, subCategories, category, isMobile }) => {
 				onClick={toggleAccordion}
 			>
 				<div className="transform transition-transform">
-					{isOpen ? (
-						<svg
-							className="w-5 h-5"
-							fill="none"
-							stroke="currentColor"
-							viewBox="0 0 24 24"
-							xmlns="http://www.w3.org/2000/svg"
-						>
-							<path
-								strokeLinecap="round"
-								strokeLinejoin="round"
-								strokeWidth="2"
-								d="M19 9l-7 7-7-7"
-							></path>
-						</svg>
-					) : (
-						<svg
-							className="w-5 h-5"
-							fill="none"
-							stroke="currentColor"
-							viewBox="0 0 24 24"
-							xmlns="http://www.w3.org/2000/svg"
-						>
-							<path
-								strokeLinecap="round"
-								strokeLinejoin="round"
-								strokeWidth="2"
-								d="M5 15l7-7 7 7"
-							></path>
-						</svg>
-					)}
+					<img src={isOpen ? Down : Side} />
 				</div>
 				<div>{title}</div>
 			</div>
@@ -71,7 +44,6 @@ const Accordion = ({ title, subCategories, category, isMobile }) => {
 							subCategory={subCategory}
 							category={category}
 							selectedSubCategory={selectedSubCategory}
-							isMobile={isMobile}
 						/>
 					))}
 				</ul>

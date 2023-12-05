@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 import ProjectCard from "../components/ProjectsPage/ProjectCard";
 import ProjectsSidebar from "../components/ProjectsPage/ProjectsSidebar";
 
@@ -27,7 +28,7 @@ const ProjectsPage = () => {
 	];
 
 	return (
-		<div className="flex h-full text-slate-500">
+		<div className="flex flex-col md:flex-row h-full text-slate-500 overflow-auto">
 			<ProjectsSidebar technologies={allTechnologies} />
 			<div className="flex flex-col w-full">
 				<div className="text-white text-sm border-r border-slate-800 p-2.5 flex gap-8 w-fit">

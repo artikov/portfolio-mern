@@ -1,27 +1,31 @@
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
+import { useMediaQuery } from "react-responsive";
+
 import Hamburger from "../components/Hamburger";
 
 const Header = () => {
 	const [menuOpen, setMenuOpen] = useState(false);
 
+	const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+
 	// Handle navigation menu status on window resize
 	useEffect(() => {
-		const updateNavWidht = () => {
-			if (window.innerWidth > 768) {
+		const updateIfNotMobile = () => {
+			if (!isMobile) {
 				setMenuOpen(false);
 			}
 		};
 
-		updateNavWidht();
+		updateIfNotMobile();
 
-		window.addEventListener("resize", updateNavWidht);
+		window.addEventListener("resize", updateIfNotMobile);
 
 		return () => {
-			window.removeEventListener("resize", updateNavWidht);
+			window.removeEventListener("resize", updateIfNotMobile);
 		};
-	}, []);
+	}, [isMobile]);
 
 	const toggleMenu = () => {
 		setMenuOpen(!menuOpen);

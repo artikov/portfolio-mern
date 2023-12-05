@@ -12,6 +12,7 @@ import {
 
 import { useDispatch } from "react-redux";
 
+import { useMediaQuery } from "react-responsive";
 import PropTypes from "prop-types";
 
 const AboutsStyleSubCategories = ({
@@ -19,9 +20,10 @@ const AboutsStyleSubCategories = ({
 	selectedSubCategory,
 	i,
 	category,
-	isMobile,
 }) => {
 	const dispatch = useDispatch();
+
+	const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
 
 	const handleSubCategoryChange = (item, category) => {
 		dispatch(setSelectedSubCategory(item));
@@ -74,7 +76,6 @@ AboutsStyleSubCategories.propTypes = {
 	selectedSubCategory: PropTypes.object,
 	i: PropTypes.number,
 	category: PropTypes.object,
-	isMobile: PropTypes.bool,
 };
 
 export default AboutsStyleSubCategories;

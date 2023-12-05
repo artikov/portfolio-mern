@@ -171,13 +171,13 @@ body {
 .accordion-content {
 	max-height: 0;
 	overflow: hidden;
-	transition: max-height 0.3s ease-in-out;
+	transition: max-height 0.6s ease-in-out;
 }
 
 /* Styles for when the accordion is open */
 .accordion-content.open {
 	max-height: 300px; /* Adjust the height according to your content */
-	transition: max-height 0.3s ease-in-out;
+	transition: max-height 0.6s ease-in-out;
 }
 
 /* NAVBAR SCROLL DOWN AND UP ANIMATION STYLES */

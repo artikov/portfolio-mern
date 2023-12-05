@@ -1,7 +1,4 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
-
-import { useState, useEffect } from "react";
-
 import AboutIcons from "./AboutIcons";
 import Accordion from "./AboutsAccordion";
 import AboutsSubCategoriesSidebar from "./AboutsSubCategoriesSidebar";
@@ -10,36 +7,22 @@ import { useDispatch } from "react-redux";
 
 import { setSelectedCategory } from "../../services/aboutsSlice";
 
+import { useMediaQuery } from "react-responsive";
 import PropTypes from "prop-types";
 
 const AboutsSidebar = ({ abouts, selectedCategory }) => {
 	const dispatch = useDispatch();
 
+	const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+
 	const handleCategoryChange = (item) => {
 		dispatch(setSelectedCategory(item));
 	};
 
-	// console.log(abouts);
-	const [isMobile, setMobile] = useState(window.innerWidth < 768);
-
-	// Handle navigation menu status on window resize
-	useEffect(() => {
-		const updateWindowDimensions = () => {
-			setMobile(window.innerWidth < 768);
-		};
-
-		updateWindowDimensions();
-
-		window.addEventListener("resize", updateWindowDimensions);
-
-		return () => {
-			window.removeEventListener("resize", updateWindowDimensions);
-		};
-	}, []);
-
 	return (
 		<>
 			<div className="border-r border-slate-800">
+				<h1 className="md:hidden p-4 text-white">_about-me</h1>
 				<div className="flex flex-col mt-2 md:w-max">
 					{!isMobile
 						? abouts?.map((category) => (
