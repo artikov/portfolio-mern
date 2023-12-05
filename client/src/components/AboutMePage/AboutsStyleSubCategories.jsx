@@ -5,22 +5,35 @@ import MarkdownFile from "../../assets/icons/markdown-file.svg";
 import Down from "../../assets/icons/down.svg";
 import Side from "../../assets/icons/side.svg";
 
-import { setSelectedSubCategory } from "../../services/aboutsSlice";
+import {
+	setSelectedSubCategory,
+	setSelectedCategory,
+} from "../../services/aboutsSlice";
 
 import { useDispatch } from "react-redux";
 
 import PropTypes from "prop-types";
 
-const AboutsStyleSubCategories = ({ item, selectedSubCategory, i }) => {
+const AboutsStyleSubCategories = ({
+	item,
+	selectedSubCategory,
+	i,
+	category,
+	isMobile,
+}) => {
 	const dispatch = useDispatch();
 
-	const handleSubCategoryChange = (item) => {
+	const handleSubCategoryChange = (item, category) => {
 		dispatch(setSelectedSubCategory(item));
+		if (isMobile) {
+			dispatch(setSelectedCategory(category));
+		}
 	};
+
 	return (
 		<div
 			key={item.category}
-			onClick={() => handleSubCategoryChange(item)}
+			onClick={() => handleSubCategoryChange(item, category)}
 			className={
 				"flex items-center gap-2 m-2.5 cursor-pointer hover:text-white ease-in-out transition-all " +
 				(selectedSubCategory?.category === item.category && "text-white")
@@ -55,6 +68,7 @@ AboutsStyleSubCategories.propTypes = {
 	handleSubCategoryChange: PropTypes.func,
 	selectedSubCategory: PropTypes.object,
 	i: PropTypes.number,
+	category: PropTypes.object,
 };
 
 export default AboutsStyleSubCategories;

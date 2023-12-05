@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 
 import PropTypes from "prop-types";
 
-const Accordion = ({ title, links }) => {
+const Accordion = ({ title, links, item, isMobile }) => {
 	const [isOpen, setIsOpen] = useState(false);
 
 	const selectedSubCategory = useSelector(
@@ -66,7 +66,9 @@ const Accordion = ({ title, links }) => {
 								key={i}
 								i={i}
 								item={link}
+								category={item}
 								selectedSubCategory={selectedSubCategory}
+								isMobile={isMobile}
 							/>
 						))}
 					</ul>

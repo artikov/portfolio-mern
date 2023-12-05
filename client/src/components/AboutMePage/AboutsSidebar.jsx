@@ -57,6 +57,7 @@ const AboutsSidebar = ({ abouts, selectedCategory }) => {
 									title={item.title}
 									links={item.categories}
 									item={item}
+									isMobile={isMobile}
 								/>
 						  ))}
 				</div>

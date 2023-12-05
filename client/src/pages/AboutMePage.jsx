@@ -9,7 +9,10 @@ import AboutCertificates from "../components/AboutMePage/AboutCertificates";
 import AOS from "aos";
 
 import { useSelector, useDispatch } from "react-redux";
-import { setSelectedCategory } from "../services/aboutsSlice";
+import {
+	setSelectedCategory,
+	setSelectedSubCategory,
+} from "../services/aboutsSlice";
 import { useFetchAboutsQuery } from "../services/aboutsApiSlice";
 
 const AboutMePage = () => {
@@ -19,6 +22,9 @@ const AboutMePage = () => {
 	const dispatch = useDispatch();
 
 	const selectedCategory = useSelector((state) => state.about.selectedCategory);
+	const selectedSubCategory = useSelector(
+		(state) => state.about.selectedSubCategory
+	);
 
 	const { data: abouts, isLoading, error } = useFetchAboutsQuery();
 
@@ -27,6 +33,16 @@ const AboutMePage = () => {
 			dispatch(setSelectedCategory(abouts[0]));
 		}
 	}, [abouts, selectedCategory, dispatch]);
+
+	useEffect(() => {
+		const checkToSetFirstItem = !selectedCategory?.categories.some(
+			(category) => category?.category === selectedSubCategory?.category
+		);
+
+		if (!selectedSubCategory || checkToSetFirstItem) {
+			dispatch(setSelectedSubCategory(selectedCategory?.categories[0]));
+		}
+	}, [selectedCategory, selectedSubCategory, dispatch]);
 
 	if (error) return <Message variant="danger">{error.status}</Message>;
 
