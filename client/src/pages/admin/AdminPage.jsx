@@ -1,14 +1,25 @@
+import { useState } from "react";
+
 import AdminMain from "../../components/AdminPage/AdminMain";
 import AdminSidebar from "../../components/AdminPage/AdminSidebar";
 
 const AdminPage = () => {
+	const [selectedComponent, setSelectedComponent] = useState("messages");
+
+	const handleComponentChange = (component) => {
+		setSelectedComponent(component);
+	};
+
 	return (
 		<div className="flex h-full text-slate-500">
 			<div className="border-r border-slate-800 min-w-[238px] p-4">
-				<AdminSidebar />
+				<AdminSidebar
+					selectedComponent={selectedComponent}
+					handleComponentChange={handleComponentChange}
+				/>
 			</div>
-			<div className="w-full p-4">
-				<AdminMain />
+			<div className="w-full p-4 overflow-auto">
+				<AdminMain selectedComponent={selectedComponent} />
 			</div>
 		</div>
 	);
