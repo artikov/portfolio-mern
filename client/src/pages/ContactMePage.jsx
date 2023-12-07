@@ -4,7 +4,7 @@ import ContactMeSidebar from "../components/ContactMePage/ContactMeSidebar";
 
 const ContactMePage = () => {
 	return (
-		<div className="flex flex-col md:flex-row h-full">
+		<div className="flex flex-col md:flex-row h-full overflow-auto md:overflow-hidden">
 			<div className="md:hidden text-white p-4">_contacts</div>
 			<div className="border-r border-slate-800 min-w-[238px]">
 				<ContactMeSidebar />
@@ -15,11 +15,11 @@ const ContactMePage = () => {
 						contacts <span className="text-slate-600">x</span>
 					</div>
 				</div>
-				<div className="flex flex-col lg:flex-row w-full h-full overflow-auto ">
-					<div className="md:border-b lg:border-r lg:w-1/2 border-slate-800">
+				<div className="flex flex-col lg:flex-row w-full h-full">
+					<div className="border-b lg:border-r lg:w-1/2 border-slate-800">
 						<ContactMeForm />
 					</div>
-					<div className="hidden md:block lg:w-1/2 xl:mt-12">
+					<div className="lg:w-1/2 xl:mt-12 overflow-auto">
 						<ContactMeCodeSnippet />
 					</div>
 				</div>

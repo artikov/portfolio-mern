@@ -62,7 +62,7 @@ button.addEventListener${xsContainer ? "\n" : ""}("click", () => {
 		<div ref={codeContainerRef}>
 			<SyntaxHighlighter
 				language="javascript"
-				showLineNumbers
+				showLineNumbers={!xsContainer}
 				style={atomOneDark}
 				customStyle={style}
 				className="text-sm lg:text-base"
