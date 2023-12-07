@@ -7,6 +7,9 @@ import HomePage from "./pages/HomePage";
 import AboutMePage from "./pages/AboutMePage";
 import ProjectsPage from "./pages/ProjectsPage";
 import ContactMePage from "./pages/ContactMePage";
+import AdminPage from "./pages/admin/AdminPage.jsx";
+import AdminRoute from "./pages/admin/AdminRoute.jsx";
+import AdminLogin from "./pages/admin/AdminLogin.jsx";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { store } from "./store.js";
@@ -26,16 +29,30 @@ const router = createBrowserRouter([
 				element: <HomePage />,
 			},
 			{
-				path: "/about",
+				path: "about",
 				element: <AboutMePage />,
 			},
 			{
-				path: "/projects",
+				path: "projects",
 				element: <ProjectsPage />,
 			},
 			{
-				path: "/contact",
+				path: "contact",
 				element: <ContactMePage />,
+			},
+			{
+				path: "login",
+				element: <AdminLogin />,
+			},
+			{
+				path: "admin",
+				element: <AdminRoute />,
+				children: [
+					{
+						path: "",
+						element: <AdminPage />,
+					},
+				],
 			},
 		],
 	},
