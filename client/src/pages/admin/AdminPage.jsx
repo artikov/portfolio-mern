@@ -11,14 +11,14 @@ const AdminPage = () => {
 	};
 
 	return (
-		<div className="flex h-full text-slate-500">
+		<div className="flex flex-col md:flex-row h-full text-slate-500">
 			<div className="border-r border-slate-800 min-w-[238px] p-4">
 				<AdminSidebar
 					selectedComponent={selectedComponent}
 					handleComponentChange={handleComponentChange}
 				/>
 			</div>
-			<div className="w-full p-4 overflow-auto">
+			<div className="w-full md:p-4 overflow-auto">
 				<AdminMain selectedComponent={selectedComponent} />
 			</div>
 		</div>
