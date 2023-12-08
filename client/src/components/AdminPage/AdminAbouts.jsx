@@ -8,13 +8,12 @@ const AdminAbouts = () => {
 		content: "",
 	});
 
-	const { title, content } = formData;
-
 	const [certificateFormData, setCertificateFormData] = useState({
 		category: "",
 		certificateCaption: "",
 	});
 
+	const { title, content } = formData;
 	const { certificateCaption } = certificateFormData;
 
 	const handleChange = (e) => {
@@ -48,7 +47,7 @@ const AdminAbouts = () => {
 
 	return (
 		<div className="flex flex-col gap-4">
-			<div className="flex flex-col items-center gap-2 mx-auto">
+			<div className="flex flex-col gap-2 mx-auto">
 				<label htmlFor="category">Category:</label>
 				<select
 					id="category"
@@ -89,7 +88,7 @@ const AdminAbouts = () => {
 							value={content}
 							onChange={handleChange}
 							className="bg-slate-950 border border-slate-800 rounded-md p-1
-						focus:outline-none focus:ring-1 focus:ring-slate-700 h-40"
+						focus:outline-none focus:ring-1 focus:ring-slate-700 h-56"
 						></textarea>
 					</div>
 					<button
