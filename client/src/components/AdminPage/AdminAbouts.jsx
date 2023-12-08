@@ -63,7 +63,7 @@ const AdminAbouts = () => {
 				</select>
 			</div>
 
-			<div className="flex justify-around">
+			<div className="flex flex-col md:flex-row gap-2 justify-around">
 				<form
 					className="border border-slate-800 rounded-md p-8 gap-4 flex flex-col"
 					onSubmit={handleSubmit}
