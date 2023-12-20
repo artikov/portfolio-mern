@@ -1,7 +1,13 @@
 import { useState } from "react";
 
+import AdminAbout from "./AdminAbout";
+import Spinner from "../Spinner";
+
+import { useFetchAboutsQuery } from "../../services/aboutsApiSlice";
+
 const AdminAbouts = () => {
-	const [category, setCategory] = useState("personal");
+	const [category, setCategory] = useState("Personal-Info");
+
 	const [formData, setFormData] = useState({
 		category: "",
 		title: "",
@@ -12,6 +18,10 @@ const AdminAbouts = () => {
 		category: "",
 		certificateCaption: "",
 	});
+
+	const { data: abouts, isLoading, error } = useFetchAboutsQuery();
+
+	const about = abouts?.find((about) => about?.title === category);
 
 	const { title, content } = formData;
 	const { certificateCaption } = certificateFormData;
@@ -57,9 +67,9 @@ const AdminAbouts = () => {
 					value={category}
 					onChange={handleCategoryChange}
 				>
-					<option value="personal">Personal Info</option>
-					<option value="professional">Professional Info</option>
-					<option value="hobbies">Hobbies</option>
+					<option value="Personal-Info">Personal Info</option>
+					<option value="Professional-Info">Professional Info</option>
+					<option value="Hobbies">Hobbies</option>
 				</select>
 			</div>
 
@@ -132,6 +142,10 @@ const AdminAbouts = () => {
 						Submit
 					</button>
 				</form>
+			</div>
+			<hr />
+			<div className="flex flex-wrap justify-between gap-4">
+				{isLoading ? <Spinner /> : <AdminAbout about={about} />}
 			</div>
 		</div>
 	);
