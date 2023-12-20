@@ -39,7 +39,7 @@ const AdminProjects = () => {
 
 	return (
 		<form
-			className="flex flex-col gap-4 mt-24 md:w-1/2 mx-auto border border-slate-800 rounded-md p-8"
+			className="flex flex-col gap-4 md:mt-24 md:w-1/2 mx-auto border border-slate-800 rounded-md p-8"
 			onSubmit={handleSubmit}
 		>
 			<div className="flex justify-between items-center">

@@ -4,7 +4,7 @@ import Spinner from "../Spinner";
 import { useGetMessagesQuery } from "../../services/messagesApiSlice";
 
 const AdminMessages = () => {
-	const { data: messages, isLoading } = useGetMessagesQuery();
+	const { data: messages, isLoading, refetch } = useGetMessagesQuery();
 
 	return (
 		<div>
@@ -13,7 +13,11 @@ const AdminMessages = () => {
 			) : (
 				<div className="flex flex-col gap-2">
 					{messages.map((message) => (
-						<AdminMessage key={message._id} message={message} />
+						<AdminMessage
+							key={message._id}
+							message={message}
+							refetch={refetch}
+						/>
 					))}
 				</div>
 			)}
