@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 
 const AdminAbout = ({ about }) => {
 	return (
-		<div className="border p-2">
+		<div className="p-2">
 			<h1 className="text-white underline text-center">{about?.title}</h1>
 			<div>
 				{about?.categories?.map((category) => (
