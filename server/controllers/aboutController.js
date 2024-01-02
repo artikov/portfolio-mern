@@ -49,4 +49,40 @@ const addImageToAbout = asyncHandler(async (req, res) => {
 	res.status(201).json(updatedAbout);
 });
 
-export { getAbouts, addCategoryToAbout, addImageToAbout };
+// @desc 		Remove image from about
+// @route		DELETE /api/abouts/:id/remove-image/:imageId
+// @access	Private/Admin
+const removeImageFromAbout = asyncHandler(async (req, res) => {
+	const about = await About.findById(req.params.id);
+
+	about.images = about.images.filter(
+		(image) => image._id.toString() !== req.params.imageId
+	);
+
+	const updatedAbout = await about.save();
+
+	res.status(201).json(updatedAbout);
+});
+
+// @desc 		Remove category from about
+// @route		DELETE /api/abouts/:id/remove-category/:categoryId
+// @access	Private/Admin
+const removeCategoryFromAbout = asyncHandler(async (req, res) => {
+	const about = await About.findById(req.params.id);
+
+	about.categories = about.categories.filter(
+		(cat) => cat._id.toString() !== req.params.categoryId
+	);
+
+	const updatedAbout = await about.save();
+
+	res.status(201).json(updatedAbout);
+});
+
+export {
+	getAbouts,
+	addCategoryToAbout,
+	addImageToAbout,
+	removeImageFromAbout,
+	removeCategoryFromAbout,
+};
