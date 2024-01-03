@@ -8,6 +8,7 @@ export const aboutsApiSlice = apiSlice.injectEndpoints({
 			providesTags: ["About"],
 			keepUnusedDataFor: 5,
 		}),
+
 		removeCategory: builder.mutation({
 			query: ({ aboutId, categoryId }) => ({
 				url: `${ABOUTS_URL}/${aboutId}/remove-category/${categoryId}`,
@@ -15,10 +16,20 @@ export const aboutsApiSlice = apiSlice.injectEndpoints({
 				providesTags: ["About"],
 			}),
 		}),
+
 		removeImage: builder.mutation({
 			query: ({ aboutId, imageId }) => ({
 				url: `${ABOUTS_URL}/${aboutId}/remove-image/${imageId}`,
 				method: "DELETE",
+				providesTags: ["About"],
+			}),
+		}),
+
+		addCategory: builder.mutation({
+			query: ({ aboutId, category, content }) => ({
+				url: `${ABOUTS_URL}/add-category/${aboutId}`,
+				method: "PATCH",
+				body: { category, content },
 				providesTags: ["About"],
 			}),
 		}),
@@ -29,4 +40,5 @@ export const {
 	useFetchAboutsQuery,
 	useRemoveCategoryMutation,
 	useRemoveImageMutation,
+	useAddCategoryMutation,
 } = aboutsApiSlice;
