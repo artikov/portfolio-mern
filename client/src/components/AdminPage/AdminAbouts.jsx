@@ -19,7 +19,7 @@ const AdminAbouts = () => {
 		certificateCaption: "",
 	});
 
-	const { data: abouts, isLoading, error } = useFetchAboutsQuery();
+	const { data: abouts, isLoading, error, refetch } = useFetchAboutsQuery();
 
 	const about = abouts?.find((about) => about?.title === category);
 
@@ -147,7 +147,11 @@ const AdminAbouts = () => {
 			</div>
 			<hr className="border-slate-800 my-2" />
 			<div className="flex flex-wrap justify-between gap-4">
-				{isLoading ? <Spinner /> : <AdminAbout about={about} />}
+				{isLoading ? (
+					<Spinner />
+				) : (
+					<AdminAbout about={about} refetch={refetch} />
+				)}
 			</div>
 		</div>
 	);
