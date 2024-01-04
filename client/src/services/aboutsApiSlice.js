@@ -1,4 +1,4 @@
-import { ABOUTS_URL } from "../constants";
+import { ABOUTS_URL, UPLOAD_URL } from "../constants";
 import { apiSlice } from "./apiSlice";
 
 export const aboutsApiSlice = apiSlice.injectEndpoints({
@@ -33,6 +33,23 @@ export const aboutsApiSlice = apiSlice.injectEndpoints({
 				providesTags: ["About"],
 			}),
 		}),
+
+		uploadImage: builder.mutation({
+			query: (formData) => ({
+				url: `${UPLOAD_URL}`,
+				method: "POST",
+				body: formData,
+			}),
+		}),
+
+		addImage: builder.mutation({
+			query: ({ aboutId, image, caption }) => ({
+				url: `${ABOUTS_URL}/add-image/${aboutId}`,
+				method: "PATCH",
+				body: { image, caption },
+				providesTags: ["About"],
+			}),
+		}),
 	}),
 });
 
@@ -41,4 +58,6 @@ export const {
 	useRemoveCategoryMutation,
 	useRemoveImageMutation,
 	useAddCategoryMutation,
+	useUploadImageMutation,
+	useAddImageMutation,
 } = aboutsApiSlice;

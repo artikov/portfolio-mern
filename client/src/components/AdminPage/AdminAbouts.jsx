@@ -45,7 +45,7 @@ const AdminAbouts = () => {
 				<>
 					<div className="flex flex-col gap-2 justify-around mx-2 lg:mx-10 ">
 						<AdminAboutsCatForm aboutId={aboutId} />
-						<AdminAboutsImgForm />
+						<AdminAboutsImgForm aboutId={aboutId} />
 					</div>
 
 					<hr className="border-slate-800 my-2" />

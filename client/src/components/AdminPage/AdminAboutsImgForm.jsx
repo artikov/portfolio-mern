@@ -1,23 +1,52 @@
 import { useState } from "react";
 
-const AdminAboutsImgForm = () => {
-	const [certificateFormData, setCertificateFormData] = useState({
-		certificateCaption: "",
-	});
+import {
+	useAddImageMutation,
+	useUploadImageMutation,
+} from "../../services/aboutsApiSlice";
 
-	const { certificateCaption } = certificateFormData;
+import PropTypes from "prop-types";
 
-	const handleCertificateChange = (e) => {
-		const { name, value } = e.target;
-		setCertificateFormData({
-			...certificateFormData,
-			[name]: value,
-		});
+const AdminAboutsImgForm = ({ aboutId }) => {
+	const [image, setImage] = useState(null);
+	const [imageUrl, setImageUrl] = useState("");
+	const [caption, setCaption] = useState("");
+
+	const [addImage, { isLoading }] = useAddImageMutation();
+	const [uploadImage] = useUploadImageMutation();
+
+	const handleUploadImage = (e) => {
+		setImage(e.target.files[0]);
 	};
 
-	const handleCertificateSubmit = (e) => {
+	const handleImageUrl = (e) => {
+		setImageUrl(e.target.value);
+	};
+
+	const handleCertificateSubmit = async (e) => {
 		e.preventDefault();
-		console.log(certificateFormData);
+
+		try {
+			if (image) {
+				const formData = new FormData();
+				formData.append("image", image);
+
+				const res = await uploadImage(formData).unwrap();
+				const imageUrl = res.image;
+
+				const newImage = {
+					aboutId,
+					image: imageUrl,
+					caption,
+				};
+
+				await addImage(newImage).unwrap();
+				setCaption("");
+				setImage(null);
+			}
+		} catch (error) {
+			console.error(error);
+		}
 	};
 
 	return (
@@ -26,13 +55,26 @@ const AdminAboutsImgForm = () => {
 			onSubmit={handleCertificateSubmit}
 		>
 			<div className="flex flex-col">
-				<label
-					htmlFor="file"
-					className="p-2 mt-6 text-center bg-slate-800 text-white text-sm rounded-md hover:bg-slate-700 transition-all duration-300 ease-in-out cursor-pointer "
-				>
+				<label htmlFor="image" className="">
 					Upload Certificate Image
 				</label>
-				<input type="file" name="file" id="file" className="hidden" />
+
+				<input
+					type="text"
+					placeholder="Enter image url"
+					id="imageUrl"
+					className="p-2 mt-6 text-center bg-slate-800 text-white text-sm rounded-md hover:bg-slate-700 transition-all duration-300 ease-in-out cursor-pointer "
+					value={imageUrl}
+					onChange={handleImageUrl}
+				/>
+
+				<input
+					type="file"
+					id="image"
+					label="Choose File"
+					className="p-2 mt-6 text-center bg-slate-800 text-white text-sm rounded-md hover:bg-slate-700 transition-all duration-300 ease-in-out cursor-pointer "
+					onChange={handleUploadImage}
+				/>
 			</div>
 
 			<div className="flex flex-col gap-2">
@@ -40,8 +82,8 @@ const AdminAboutsImgForm = () => {
 				<textarea
 					id="certificateCaption"
 					name="certificateCaption"
-					value={certificateCaption}
-					onChange={handleCertificateChange}
+					value={caption}
+					onChange={(e) => setCaption(e.target.value)}
 					className="bg-slate-950 border border-slate-800 rounded-md p-1
 						focus:outline-none focus:ring-1 focus:ring-slate-700 h-60"
 				></textarea>
@@ -51,10 +93,14 @@ const AdminAboutsImgForm = () => {
 				type="submit"
 				className="p-2 mt-6 bg-slate-800 text-white text-sm rounded-md hover:bg-slate-700 transition-all duration-300 ease-in-out"
 			>
-				Submit
+				{isLoading ? "Loading..." : "Submit"}
 			</button>
 		</form>
 	);
+};
+
+AdminAboutsImgForm.propTypes = {
+	aboutId: PropTypes.string.isRequired,
 };
 
 export default AdminAboutsImgForm;
