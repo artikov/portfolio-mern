@@ -17,6 +17,7 @@ const AdminAboutsImgForm = ({ aboutId }) => {
 
 	const handleUploadImage = (e) => {
 		setImage(e.target.files[0]);
+		setImageUrl(e.target.files[0].name);
 	};
 
 	const handleImageUrl = (e) => {
@@ -27,13 +28,24 @@ const AdminAboutsImgForm = ({ aboutId }) => {
 		e.preventDefault();
 
 		try {
-			if (image) {
+			if (image && imageUrl === image.name) {
 				const formData = new FormData();
 				formData.append("image", image);
 
 				const res = await uploadImage(formData).unwrap();
-				const imageUrl = res.image;
+				const uploadedUrl = res.image;
 
+				const newImage = {
+					aboutId,
+					image: uploadedUrl,
+					caption,
+				};
+
+				await addImage(newImage).unwrap();
+				setCaption("");
+				setImage(null);
+				setImageUrl("");
+			} else if (imageUrl) {
 				const newImage = {
 					aboutId,
 					image: imageUrl,
@@ -43,6 +55,7 @@ const AdminAboutsImgForm = ({ aboutId }) => {
 				await addImage(newImage).unwrap();
 				setCaption("");
 				setImage(null);
+				setImageUrl("");
 			}
 		} catch (error) {
 			console.error(error);
@@ -59,22 +72,26 @@ const AdminAboutsImgForm = ({ aboutId }) => {
 					Upload Certificate Image
 				</label>
 
-				<input
-					type="text"
-					placeholder="Enter image url"
-					id="imageUrl"
-					className="p-2 mt-6 text-center bg-slate-800 text-white text-sm rounded-md hover:bg-slate-700 transition-all duration-300 ease-in-out cursor-pointer "
-					value={imageUrl}
-					onChange={handleImageUrl}
-				/>
+				<div className="flex items-center mt-4">
+					<input
+						type="text"
+						placeholder="Enter image url or choose file"
+						id="imageUrl"
+						className="p-2 flex-1 mr-2 text-center bg-slate-800 text-white text-sm rounded-md hover:bg-slate-700 transition-all duration-300 ease-in-out "
+						value={imageUrl}
+						onChange={handleImageUrl}
+					/>
 
-				<input
-					type="file"
-					id="image"
-					label="Choose File"
-					className="p-2 mt-6 text-center bg-slate-800 text-white text-sm rounded-md hover:bg-slate-700 transition-all duration-300 ease-in-out cursor-pointer "
-					onChange={handleUploadImage}
-				/>
+					<label className="p-2 bg-slate-800 text-sm rounded-md hover:bg-slate-700 transition-all duration-300 ease-in-out cursor-pointer">
+						<input
+							type="file"
+							id="image"
+							style={{ display: "none" }}
+							onChange={handleUploadImage}
+						/>
+						Choose File
+					</label>
+				</div>
 			</div>
 
 			<div className="flex flex-col gap-2">
