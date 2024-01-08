@@ -16,23 +16,23 @@ const getContacts = asyncHandler(async (req, res) => {
 // @desc 		Add contact details
 // @route		POST /api/contacts
 // @access	Private
-const addContacts = asyncHandler(async (req, res) => {
-	try {
-		const { email, phone, links } = req.body;
+// const addContacts = asyncHandler(async (req, res) => {
+// 	try {
+// 		const { email, phone, links } = req.body;
 
-		const contact = new Contacts({
-			email,
-			phone,
-			otherLinks: links,
-		});
+// 		const contact = new Contacts({
+// 			email,
+// 			phone,
+// 			otherLinks: links,
+// 		});
 
-		const createdContact = await contact.save();
+// 		const createdContact = await contact.save();
 
-		res.status(201).json(createdContact);
-	} catch (error) {
-		res.status(500).json({ message: error.message });
-	}
-});
+// 		res.status(201).json(createdContact);
+// 	} catch (error) {
+// 		res.status(500).json({ message: error.message });
+// 	}
+// });
 
 // @desc 		Update contact details
 // @route		PUT /api/contacts/:id
@@ -60,4 +60,4 @@ const updateContacts = asyncHandler(async (req, res) => {
 	}
 });
 
-export { getContacts, updateContacts, addContacts };
+export { getContacts, updateContacts };

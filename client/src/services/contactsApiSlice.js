@@ -8,7 +8,16 @@ export const contactsApiSlice = apiSlice.injectEndpoints({
 			providesTags: ["Contact"],
 			keepUnusedDataFor: 5,
 		}),
+		updateContacts: builder.mutation({
+			query: ({ id, email, phone, links }) => ({
+				url: `${CONTACTS_URL}/${id}`,
+				method: "PUT",
+				body: { email, phone, links },
+			}),
+			invalidatesTags: ["Contact"],
+		}),
 	}),
 });
 
-export const { useGetContactsQuery } = contactsApiSlice;
+export const { useGetContactsQuery, useUpdateContactsMutation } =
+	contactsApiSlice;
