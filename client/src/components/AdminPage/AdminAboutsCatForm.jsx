@@ -26,8 +26,6 @@ const AdminAboutsCatForm = ({ aboutId }) => {
 		} catch (error) {
 			console.error(error);
 		}
-
-		console.log(formData);
 	};
 
 	return (

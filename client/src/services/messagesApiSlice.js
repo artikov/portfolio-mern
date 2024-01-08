@@ -6,9 +6,9 @@ export const messagesApiSlice = apiSlice.injectEndpoints({
 		getMessages: builder.query({
 			query: () => ({
 				url: MESSAGES_URL,
-				providesTags: ["Message"],
-				keepUnusedDataFor: 5,
 			}),
+			providesTags: ["Message"],
+			keepUnusedDataFor: 5,
 		}),
 		postMessage: builder.mutation({
 			query: (body) => ({
@@ -21,8 +21,8 @@ export const messagesApiSlice = apiSlice.injectEndpoints({
 			query: (id) => ({
 				url: `${MESSAGES_URL}/${id}`,
 				method: "DELETE",
-				providesTags: ["Message"],
 			}),
+			invalidatesTags: ["Message"],
 		}),
 	}),
 });

@@ -13,16 +13,16 @@ export const aboutsApiSlice = apiSlice.injectEndpoints({
 			query: ({ aboutId, categoryId }) => ({
 				url: `${ABOUTS_URL}/${aboutId}/remove-category/${categoryId}`,
 				method: "DELETE",
-				providesTags: ["About"],
 			}),
+			invalidatesTags: ["About"],
 		}),
 
 		removeImage: builder.mutation({
 			query: ({ aboutId, imageId }) => ({
 				url: `${ABOUTS_URL}/${aboutId}/remove-image/${imageId}`,
 				method: "DELETE",
-				providesTags: ["About"],
 			}),
+			invalidatesTags: ["About"],
 		}),
 
 		addCategory: builder.mutation({
@@ -30,8 +30,8 @@ export const aboutsApiSlice = apiSlice.injectEndpoints({
 				url: `${ABOUTS_URL}/add-category/${aboutId}`,
 				method: "PATCH",
 				body: { category, content },
-				providesTags: ["About"],
 			}),
+			invalidatesTags: ["About"],
 		}),
 
 		uploadImage: builder.mutation({
@@ -47,8 +47,8 @@ export const aboutsApiSlice = apiSlice.injectEndpoints({
 				url: `${ABOUTS_URL}/add-image/${aboutId}`,
 				method: "PATCH",
 				body: { image, caption },
-				providesTags: ["About"],
 			}),
+			invalidatesTags: ["About"],
 		}),
 	}),
 });

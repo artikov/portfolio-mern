@@ -20,7 +20,7 @@ const AdminProject = ({ project }) => {
 					Deleting...
 				</div>
 			)}
-			<div className="flex flex-col md:flex-row text-sm md:text-base justify-between border border-slate-800 rounded-md md:p-8 relative">
+			<div className="flex flex-col md:flex-row text-sm md:text-base justify-between gap-2 border border-slate-800 rounded-md md:p-8 relative">
 				<div className="flex flex-col gap-4">
 					<h1 className=" text-lg text-white">{project.name}</h1>
 					<p>{project.detail}</p>
@@ -28,7 +28,7 @@ const AdminProject = ({ project }) => {
 					<p>{project.technologies.join(", ")}</p>
 					<p>{project.completeDate}</p>
 				</div>
-				<div>
+				<div className="m-2">
 					<img src={project.image} alt="" />
 				</div>
 				<button
