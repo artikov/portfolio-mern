@@ -11,6 +11,7 @@ import projectRoutes from "./routes/projectRoutes.js";
 import contactsRoutes from "./routes/contactsRoutes.js";
 import messagesRoutes from "./routes/messagesRoutes.js";
 import uploadRoutes from "./routes/uploadRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
 
 connectDB();
 
@@ -34,6 +35,7 @@ app.use("/api/projects", projectRoutes);
 app.use("/api/contacts", contactsRoutes);
 app.use("/api/messages", messagesRoutes);
 app.use("/api/upload", uploadRoutes);
+app.use("/api/users", userRoutes);
 
 app.use(notFound);
 app.use(errorHandler);

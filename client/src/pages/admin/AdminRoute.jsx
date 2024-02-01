@@ -4,7 +4,7 @@ import { Navigate, Outlet } from "react-router-dom";
 const AdminRoute = () => {
 	// const { userInfo } = useSelector((state) => state.auth);
 
-	const userInfo = true;
+	const userInfo = false;
 	return userInfo ? <Outlet /> : <Navigate to="/login" />;
 };
 
