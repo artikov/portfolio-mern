@@ -5,3 +5,4 @@ export const PROJECTS_URL = "/api/projects";
 export const CONTACTS_URL = "/api/contacts";
 export const MESSAGES_URL = "/api/messages";
 export const UPLOAD_URL = "/api/upload";
+export const USERS_URL = "/api/users";

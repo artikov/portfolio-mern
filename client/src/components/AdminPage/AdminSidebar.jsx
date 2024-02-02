@@ -1,6 +1,27 @@
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
+import { useLogoutMutation } from "../../services/usersApiSlice";
+import { logout } from "../../services/authSlice";
+
 import PropTypes from "prop-types";
 
 const AdminSidebar = ({ selectedComponent, handleComponentChange }) => {
+	// DISPATCH LOGOUT
+	const navigate = useNavigate();
+	const dispatch = useDispatch();
+	const [logoutAPI] = useLogoutMutation();
+
+	const handleLogout = async () => {
+		try {
+			navigate("/");
+			await logoutAPI().unwrap();
+			dispatch(logout());
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
 	const isActive = (component) => {
 		if (selectedComponent === component) {
 			return "text-slate-100";
@@ -41,6 +62,12 @@ const AdminSidebar = ({ selectedComponent, handleComponentChange }) => {
 				onClick={() => handleComponentChange("contacts")}
 			>
 				Contacts
+			</div>
+			<div
+				className={` cursor-pointer  bg-red-500 text-white rounded-md p-2 w-full  hover:text-slate-100 hover:bg-red-700 transition-all`}
+				onClick={handleLogout}
+			>
+				Logout
 			</div>
 		</div>
 	);

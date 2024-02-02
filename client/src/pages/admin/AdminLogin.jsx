@@ -1,29 +1,43 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
+import { useDispatch, useSelector } from "react-redux";
+
+import { setCredentials } from "../../services/authSlice";
+import { useLoginMutation } from "../../services/usersApiSlice";
 
 const AdminLogin = () => {
-	const [formData, setFormData] = useState({
-		username: "",
-		password: "",
-	});
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
 
-	const { username, password } = formData;
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
 
-	const handleChange = (e) => {
-		const { name, value } = e.target;
-		setFormData({ ...formData, [name]: value });
-	};
+	const { userInfo } = useSelector((state) => state.auth);
 
-	const handleSubmit = (e) => {
+	const [login, { isLoading }] = useLoginMutation();
+
+	useEffect(() => {
+		if (userInfo?.isAdmin) {
+			navigate("/admin");
+		}
+	}, [userInfo, navigate]);
+
+	const handleSubmit = async (e) => {
 		e.preventDefault();
-		console.log(formData);
-	};
 
-	const userInfo = false;
-	if (userInfo == true) {
-		return <Navigate to="/admin" />;
-	}
+		// DISPATCH LOGIN
+		try {
+			const res = await login({ email, password }).unwrap();
+
+			dispatch(setCredentials({ ...res }));
+
+			navigate("/admin");
+		} catch (error) {
+			console.log(error);
+		}
+	};
 
 	return (
 		<div className="text-slate-500 flex">
@@ -33,13 +47,13 @@ const AdminLogin = () => {
 			>
 				<h1 className="mx-auto">Admin Login</h1>
 				<div className="flex gap-2 items-center">
-					<label htmlFor="username">_username</label>
+					<label htmlFor="email">_email</label>
 					<input
 						type="text"
-						id="username"
-						name="username"
-						value={username}
-						onChange={handleChange}
+						id="email"
+						name="email"
+						value={email}
+						onChange={(e) => setEmail(e.target.value)}
 						className="bg-slate-950 border border-slate-800 rounded-md p-1
 						focus:outline-none focus:ring-1 focus:ring-slate-700"
 					/>
@@ -51,7 +65,7 @@ const AdminLogin = () => {
 						id="password"
 						name="password"
 						value={password}
-						onChange={handleChange}
+						onChange={(e) => setPassword(e.target.value)}
 						className="bg-slate-950 border border-slate-800 rounded-md p-1
 						focus:outline-none focus:ring-1 focus:ring-slate-700"
 					/>
@@ -60,7 +74,7 @@ const AdminLogin = () => {
 					type="submit"
 					className="p-2 mt-6 bg-slate-800 text-white text-sm rounded-md hover:bg-slate-700 transition-all duration-300 ease-in-out"
 				>
-					Login
+					{isLoading ? "Loading..." : "Login"}
 				</button>
 			</form>
 		</div>
