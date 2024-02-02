@@ -59,7 +59,7 @@ const AboutMe = () => {
 					{selectedSubCategory === null ? (
 						<Spinner />
 					) : (
-						<div className="mt-[24px]" ref={textRef}>
+						<div className="mt-[24px] whitespace-pre-line" ref={textRef}>
 							{selectedSubCategory?.content}
 						</div>
 					)}
