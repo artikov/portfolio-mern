@@ -20,12 +20,7 @@ const AboutCertificates = ({ selectedCategory }) => {
 						<img src={item.image} alt="" className="object-cover" />
 					</div>
 					<div>
-						<p className="m-4 text-sm text-justify">
-							Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum
-							corporis soluta dolorem fuga reiciendis repudiandae dignissimos
-							minus tempore facere error.
-							{item.caption}
-						</p>
+						<p className="m-4 text-sm text-justify">{item.caption}</p>
 					</div>
 				</div>
 			));

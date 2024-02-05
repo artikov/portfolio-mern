@@ -155,7 +155,7 @@ body {
 	overflow: hidden;
 	padding: 1rem;
 	gap: 1rem;
-	animation: scrollAnimation 8s linear infinite; /* Change the time here based on the number of carousel items to change the speed of animation */
+	animation: scrollAnimation 20s linear infinite; /* Change the time here based on the number of carousel items to change the speed of animation */
 }
 
 @keyframes scrollAnimation {
